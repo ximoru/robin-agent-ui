@@ -15,7 +15,6 @@ var header = require('gulp-header');
 var del = require('del');
 var gulpif = require('gulp-if');
 var minimist = require('minimist');
-var exec = require('gulp-exec');
 
 //获取参数
 var argv = require('minimist')(process.argv.slice(2), {
@@ -85,6 +84,10 @@ gulp.task('clear', function(cb) {
   return del(['./dist/*'], cb);
 });
 
+gulp.task('clearCurrent', function(cb) {
+  return del(['./release/current'], cb);
+});
+
 gulp.task('clearRelease', function(cb) {
   return del(['./json/*', releaseDir], cb);
 });
@@ -96,26 +99,6 @@ gulp.task('mv', task.mv);
 gulp.task('src', function(){ //命令：gulp src
   return gulp.src('./dev-pro/**/*')
   .pipe(gulp.dest('./src'));
-});
-
-gulp.task('deployToDev', function(){ //命令：gulp deployToDev
-
-  var options = {
-    continueOnError: false, // default = false, true means don't emit error event
-    pipeStdout: false, // default = false, true means stdout is written to file.contents
-    customTemplatingThing: "test" // content passed to lodash.template()
-  };
-
-  var reportOptions = {
-  	err: true, // default = true, false means don't write err
-  	stderr: true, // default = true, false means don't write stderr
-  	stdout: true // default = true, false means don't write stdout
-  };
-
-  return gulp.src(releaseDir + '/**/*')
-  .pipe(exec('scp -r ' +  releaseDir + '/*' + ' root@47.104.80.136:/home/wwwroot/robin-agent-dev.laralab.org/', options))
-  .pipe(exec.reporter(reportOptions));
-;
 });
 
 //构建核心源文件
@@ -144,7 +127,11 @@ gulp.task('release', function(){ //命令：gulp && gulp release
   .pipe(gulp.dest(releaseDir + '/layui'))
 
   //复制核心文件
-  return gulp.src('./dist/**/*')
+  gulp.src('./dist/**/*')
   .pipe(gulp.dest(releaseDir + '/dist'));
+
+  //复制到最新版本的文件夹
+  return gulp.src(releaseDir + '/**/*')
+  .pipe(gulp.dest('./release/current'));
 
 });
