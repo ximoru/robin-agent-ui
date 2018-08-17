@@ -15,7 +15,12 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'gulp && gulp clearCurrent && gulp release'
+        sh 'gulp && gulp release'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        sh 'gulp clearCurrent && gulp deploy'
       }
     }
     stage('Deliver for staging') {

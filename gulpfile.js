@@ -108,7 +108,7 @@ gulp.task('default', ['clear', 'src'], function(){ //命令：gulp
   }
 });
 
-//发行 - layuiAdmin 官方使用
+//发行
 gulp.task('release', function(){ //命令：gulp && gulp release
   
   //复制 json
@@ -127,11 +127,12 @@ gulp.task('release', function(){ //命令：gulp && gulp release
   .pipe(gulp.dest(releaseDir + '/layui'))
 
   //复制核心文件
-  gulp.src('./dist/**/*')
+  return gulp.src('./dist/**/*')
   .pipe(gulp.dest(releaseDir + '/dist'));
+});
 
+gulp.task('deploy', function(){ //命令：gulp deploy
   //复制到最新版本的文件夹
   return gulp.src(releaseDir + '/**/*')
   .pipe(gulp.dest('./release/current'));
-
 });
