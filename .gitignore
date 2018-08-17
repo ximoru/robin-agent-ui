@@ -2,3 +2,4 @@ dist/
 node_modules/
 pack/
 release/
+package-lock.json

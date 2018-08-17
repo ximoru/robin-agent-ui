@@ -15,7 +15,13 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'gulp'
+        sh 'gulp && gulp release'
+      }
+    }
+    stage('Deliver for staging') {
+      when { not { branch 'master' } }
+      steps {
+        sh 'gulp deployToDev'
       }
     }
   }
