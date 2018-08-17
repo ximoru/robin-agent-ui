@@ -30,7 +30,7 @@ var argv = require('minimist')(process.argv.slice(2), {
 ]
 
 ,destDir = './dist' //构建的目标目录
-,releaseDir = './pack/'+ pkg.name +'-v' + pkg.version //发行版本目录
+,releaseDir = './release/'+ pkg.name +'-v' + pkg.version //发行版本目录
 
 //任务
 ,task = {
@@ -79,11 +79,11 @@ var argv = require('minimist')(process.argv.slice(2), {
   }
 };
 
-
 //清理
 gulp.task('clear', function(cb) {
   return del(['./dist/*'], cb);
 });
+
 gulp.task('clearRelease', function(cb) {
   return del(['./json/*', releaseDir], cb);
 });
@@ -107,51 +107,23 @@ gulp.task('default', ['clear', 'src'], function(){ //命令：gulp
 //发行 - layuiAdmin 官方使用
 gulp.task('release', function(){ //命令：gulp && gulp release
   
-  //复制核心文件
-  gulp.src('./dist/**/*')
-  .pipe(gulp.dest(releaseDir + '/dist'));
-  
-  gulp.src('./src/**/*')
-  .pipe(gulp.dest(releaseDir + '/src'));
-
   //复制 json
-  gulp.src('./dev/json/**/*')
-  .pipe(gulp.dest('./json'))
-  .pipe(gulp.dest('./start/json'))
-  .pipe(gulp.dest(releaseDir + '/start/json'));
+  gulp.src('./robin/json/**/*')
+  .pipe(gulp.dest(releaseDir + '/json'));
 
   //复制并转义宿主页面
-  gulp.src('./dev/index.html')
+  gulp.src('./robin/index.html')
     .pipe(replace(/\<\!-- clear s --\>([\s\S]*?)\<\!-- clear e --\>/, ''))
-    .pipe(replace('//local.res.layui.com/layui/src', 'layui'))
-    .pipe(replace("base: '../dev-pro/'", "base: '../dist/'"))
-    .pipe(replace('@@version@@', pkg.version))
-  .pipe(gulp.dest('./start'))
-  .pipe(gulp.dest(releaseDir + '/start'));
-  
-  //复制帮助文件
-  gulp.src([
-    './帮助/*'
-    ,'!./帮助/说明.txt'
-  ]).pipe(gulp.dest(releaseDir + '/帮助'));
-  
-  gulp.src([
-    './帮助/说明.txt'
-  ]).pipe(gulp.dest(releaseDir));
-  
-  
-  //复制 gulpfile
-  gulp.src([
-    'gulpfile.js'
-    ,'package.json'
-  ]).pipe(gulp.dest(releaseDir));
-  
-  //说明
-  gulp.src('../pack/说明.txt')
-  .pipe(gulp.dest('../pack/layuiAdmin.pack'));
+    .pipe(replace("base: '../src/'", "base: './dist/'"))
+    .pipe(replace(/version: .*/, "version: '" + pkg.version + "'"))
+  .pipe(gulp.dest(releaseDir));
   
   //复制 layui
-  return gulp.src('../../../../res/layui/rc/**/*')
-  .pipe(gulp.dest('./start/layui'))
-  .pipe(gulp.dest(releaseDir + '/start/layui'))
+  gulp.src('./robin/layui/**/*')
+  .pipe(gulp.dest(releaseDir + '/layui'))
+
+  //复制核心文件
+  return gulp.src('./dist/**/*')
+  .pipe(gulp.dest(releaseDir + '/dist'));
+
 });

@@ -1,8 +1,8 @@
 {
   "name": "robin-agent-ui",
-  "version": "1.0.0",
+  "version": "0.8.0",
   "description": "RobinFin Agent System UI",
-  "license": "LPPL",
+  "license": "RobinFin",
   "author": "info@robinjf.com",
   "homepage": "http://robin-agent-dev.laralab.org/",
   "devDependencies": {
