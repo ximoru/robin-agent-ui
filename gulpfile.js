@@ -113,7 +113,7 @@ gulp.task('deployToDev', function(){ //命令：gulp deployToDev
   };
 
   return gulp.src(releaseDir + '/**/*')
-  .pipe(exec('scp -r ' +  releaseDir + '/*' + ' root@robin-agent-dev.laralab.org:/home/wwwroot/robin-agent-dev.laralab.org/', options))
+  .pipe(exec('scp -r ' +  releaseDir + '/*' + ' root@47.104.80.136:/home/wwwroot/robin-agent-dev.laralab.org/', options))
   .pipe(exec.reporter(reportOptions));
 ;
 });
