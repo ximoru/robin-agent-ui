@@ -1,0 +1,181 @@
+<script type="text/html" template>
+    <link rel="stylesheet" href="{{ layui.setter.base }}style/treetable.css?v={{ layui.admin.v }}-1" media="all">
+</script>
+
+<title>间接财富顾问</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>客户管理</cite></a>
+        <a><cite>间接财富顾问</cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layadmin-userfront-formlist">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">注册时间：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="test10" placeholder=" - ">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">姓名：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="username" placeholder="请输入关键字" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn" id="btn-search">搜索</button>
+                    <button class="layui-btn">重置</button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-card-body">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="30">
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>手机号</th>
+                    <th>姓名</th>
+                    <th>总收益</th>
+                    <th>贡献收益</th>
+                    <th>月贡献收益</th>
+                    <th>激活会员</th>
+                    <th>剩余激活码数</th>
+                    <th>注册时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>18257304882</td>
+                    <td>李太白</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0（0）</td>
+                    <td>19</td>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>18257304882</td>
+                    <td>李太白</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0（0）</td>
+                    <td>19</td>
+                    <td>2018-07-31 15:29</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>18257304882</td>
+                    <td>李太白</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0（0）</td>
+                    <td>19</td>
+                    <td>2018-07-31 15:29</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>18257304882</td>
+                    <td>李太白</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0（0）</td>
+                    <td>19</td>
+                    <td>2018-07-31 15:29</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>18257304882</td>
+                    <td>李太白</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0（0）</td>
+                    <td>19</td>
+                    <td>2018-07-31 15:29</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>18257304882</td>
+                    <td>李太白</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0（0）</td>
+                    <td>19</td>
+                    <td>2018-07-31 15:29</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>18257304882</td>
+                    <td>李太白</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0（0）</td>
+                    <td>19</td>
+                    <td>2018-07-31 15:29</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use(['treetable', 'laydate'], function () {
+        var $ = layui.jquery;
+        var treetable = layui.treetable;
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#test6'
+            , range: true
+        });
+
+        $('#btn-search').click(function () {
+            var keyword = $('#edt-search').val();
+            var searchCount = 0;
+            $('#auth-table').next('.treeTable').find('.layui-table-body tbody tr td').each(function () {
+                $(this).css('background-color', 'transparent');
+                var text = $(this).text();
+                if (keyword != '' && text.indexOf(keyword) >= 0) {
+                    $(this).css('background-color', 'rgba(250,230,160,0.5)');
+                    if (searchCount == 0) {
+                        treetable.expandAll('#auth-table');
+                        $('html,body').stop(true);
+                        $('html,body').animate({scrollTop: $(this).offset().top - 150}, 500);
+                    }
+                    searchCount++;
+                }
+            });
+            if (keyword == '') {
+                layer.msg("请输入搜索内容", {icon: 5});
+            } else if (searchCount == 0) {
+                layer.msg("没有匹配结果", {icon: 5});
+            }
+        });
+    });
+</script>
