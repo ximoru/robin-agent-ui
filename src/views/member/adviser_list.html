@@ -36,191 +36,40 @@
             </div>
         </div>
         <div class="layui-card-body">
-            <table class="layui-table">
-                <colgroup>
-                    <col width="60">
-                    <col>
-                    <col>
-                    <col>
-                    <col>
-                    <col>
-                    <col>
-                    <col>
-                </colgroup>
-                <thead>
-                <tr>
-                    <th>序号</th>
-                    <th>顾问类型</th>
-                    <th>手机号</th>
-                    <th>姓名</th>
-                    <th>总收益</th>
-                    <th>贡献收益</th>
-                    <th>月贡献收益</th>
-                    <th>激活会员</th>
-                    <th>绑定会员</th>
-                    <th>注册时间</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>间接顾问</td>
-                    <td>18257304882</td>
-                    <td>李太白</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>2</td>
-                    <td>7</td>
-                    <td>2018-07-31 15:29</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td style="color: red">直接顾问</td>
-                    <td>18257304882</td>
-                    <td>李太白</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>2</td>
-                    <td>7</td>
-                    <td>2018-07-31 15:29</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td style="color: red">直接顾问</td>
-                    <td>18257304882</td>
-                    <td>李太白</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>2</td>
-                    <td>7</td>
-                    <td>2018-07-31 15:29</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td style="color: red">直接顾问</td>
-                    <td>18257304882</td>
-                    <td>李太白</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>2</td>
-                    <td>7</td>
-                    <td>2018-07-31 15:29</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td style="color: red">直接顾问</td>
-                    <td>18257304882</td>
-                    <td>李太白</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>2</td>
-                    <td>7</td>
-                    <td>2018-07-31 15:29</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td style="color: red">直接顾问</td>
-                    <td>18257304882</td>
-                    <td>李太白</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>2</td>
-                    <td>7</td>
-                    <td>2018-07-31 15:29</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td style="color: red">直接顾问</td>
-                    <td>18257304882</td>
-                    <td>李太白</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>2</td>
-                    <td>7</td>
-                    <td>2018-07-31 15:29</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td style="color: red">直接顾问</td>
-                    <td>18257304882</td>
-                    <td>李太白</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>2</td>
-                    <td>7</td>
-                    <td>2018-07-31 15:29</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td style="color: red">直接顾问</td>
-                    <td>18257304882</td>
-                    <td>李太白</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>2</td>
-                    <td>7</td>
-                    <td>2018-07-31 15:29</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td style="color: red">直接顾问</td>
-                    <td>18257304882</td>
-                    <td>李太白</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>0.00</td>
-                    <td>2</td>
-                    <td>7</td>
-                    <td>2018-07-31 15:29</td>
-                </tr>
-
-                </tbody>
-            </table>
+            <table id="demo" lay-filter="test"></table>
         </div>
     </div>
 </div>
 
 <script>
-    layui.use(['treetable', 'laydate'], function () {
+    layui.use(['laydate', 'form', 'table'], function () {
         var $ = layui.jquery;
-        var treetable = layui.treetable;
         var laydate = layui.laydate;
+        var form = layui.form;
+        var table = layui.table;
 
+        form.render();
         laydate.render({
             elem: '#test6'
             , range: true
         });
 
-        $('#btn-search').click(function () {
-            var keyword = $('#edt-search').val();
-            var searchCount = 0;
-            $('#auth-table').next('.treeTable').find('.layui-table-body tbody tr td').each(function () {
-                $(this).css('background-color', 'transparent');
-                var text = $(this).text();
-                if (keyword != '' && text.indexOf(keyword) >= 0) {
-                    $(this).css('background-color', 'rgba(250,230,160,0.5)');
-                    if (searchCount == 0) {
-                        treetable.expandAll('#auth-table');
-                        $('html,body').stop(true);
-                        $('html,body').animate({scrollTop: $(this).offset().top - 150}, 500);
-                    }
-                    searchCount++;
-                }
-            });
-            if (keyword == '') {
-                layer.msg("请输入搜索内容", {icon: 5});
-            } else if (searchCount == 0) {
-                layer.msg("没有匹配结果", {icon: 5});
-            }
+        //执行渲染
+
+        table.render({
+            elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
+            ,url: 'json/member/adviser_list.json'
+            ,cols: [[
+                {field: 'id', title: '序号'}
+                ,{field: 'type', title: '顾问类型'}
+                ,{field: 'phone', title: '手机号'}
+                ,{field: 'name', title: '姓名'}
+                ,{field: 'total_revenue', title: '总收益'}
+                ,{field: 'status', title: '激活会员'}
+                ,{field: 'remaining', title: '剩余激活码数'}
+                ,{field: 'binding', title: '绑定会员'}
+                ,{field: 'created_at', title: '注册时间'}
+            ]], //设置表头
         });
     });
 </script>
