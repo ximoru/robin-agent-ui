@@ -13,49 +13,49 @@
                   <ul class="layui-row layui-col-space10">
                     <li class="layui-col-xs3">
                       <a lay-href="app/content/comment" class="layadmin-backlog-body">
-                        <h3>待审评论</h3>
+                        <h3>当日激活用户</h3>
                         <p><cite>66</cite></p>
                       </a>
                     </li>
                     <li class="layui-col-xs3">
                       <a lay-href="app/forum/list" class="layadmin-backlog-body">
-                        <h3>待审帖子</h3>
+                        <h3>累计激活用户</h3>
                         <p><cite>12</cite></p>
                       </a>
                     </li>
                     <li class="layui-col-xs3">
                       <a lay-href="template/goodslist" class="layadmin-backlog-body">
-                        <h3>待审商品</h3>
+                        <h3>累计用户数</h3>
                         <p><cite>99</cite></p>
                       </a>
                     </li>
                     <li class="layui-col-xs3">
                       <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});" class="layadmin-backlog-body">
-                        <h3>待发货</h3>
+                        <h3>剩余激活码</h3>
                         <p><cite>20</cite></p>
                       </a>
                     </li>
                     <li class="layui-col-xs3">
                       <a lay-href="app/content/comment" class="layadmin-backlog-body">
-                        <h3>待审评论</h3>
+                        <h3>当日收益</h3>
                         <p><cite>66</cite></p>
                       </a>
                     </li>
                     <li class="layui-col-xs3">
                       <a lay-href="app/forum/list" class="layadmin-backlog-body">
-                        <h3>待审帖子</h3>
+                        <h3>累计收益</h3>
                         <p><cite>12</cite></p>
                       </a>
                     </li>
                     <li class="layui-col-xs3">
                       <a lay-href="template/goodslist" class="layadmin-backlog-body">
-                        <h3>待审商品</h3>
+                        <h3>待提现收益</h3>
                         <p><cite>99</cite></p>
                       </a>
                     </li>
                     <li class="layui-col-xs3">
                       <a href="javascript:;" onclick="layer.tips('不跳转', this, {tips: 3});" class="layadmin-backlog-body">
-                        <h3>待发货</h3>
+                        <h3>累计提现</h3>
                         <p><cite style="color: #FF5722;">20</cite></p>
                       </a>
                     </li>
@@ -84,7 +84,7 @@
     
     <div class="layui-col-md4">
       <div class="layui-card">
-        <div class="layui-card-header">版本信息</div>
+        <div class="layui-card-header">系统信息</div>
         <div class="layui-card-body layui-text">
           <table class="layui-table">
             <colgroup>
@@ -93,32 +93,31 @@
             </colgroup>
             <tbody>
               <tr>
-                <td>当前版本</td>
+                <td>系统版本</td>
                 <td>
                   <script type="text/html" template>
-                    v{{ layui.admin.v }}
-                    <a href="http://fly.layui.com/docs/3/" target="_blank" style="padding-left: 15px;">更新日志</a>
+                    v{{ layui.cache.version }}
                   </script>
                 </td>
               </tr>
               <tr>
-                <td>基于框架</td>
+                <td>联系电话</td>
                 <td>
                   <script type="text/html" template>
-                    layui-v{{ layui.v }}
+                    13888888888
                   </script>
                </td>
               </tr>
               <tr>
-                <td>主要特色</td>
-                <td>单页面 / 响应式 / 清爽 / 极简</td>
+                <td>客服 QQ</td>
+                <td>88888888 / 66666666</td>
               </tr>
               <tr>
-                <td>获取渠道</td>
+                <td>APP下载</td>
                 <td style="padding-bottom: 0;">
                   <div class="layui-btn-container">
-                    <a href="http://www.layui.com/admin/" target="_blank" class="layui-btn layui-btn-danger">获取授权</a>
-                    <a href="http://fly.layui.com/download/layuiAdmin/" target="_blank" class="layui-btn">立即下载</a>
+                    <a href="http://www.robinjf.com/" target="_blank" class="layui-btn layui-btn-danger">苹果版</a>
+                    <a href="http://www.robinjf.com/" target="_blank" class="layui-btn">安卓版</a>
                   </div>
                 </td>
               </tr>
@@ -131,26 +130,12 @@
         <div class="layui-card-header">效果报告</div>
         <div class="layui-card-body layadmin-takerates">
           <div class="layui-progress" lay-showPercent="yes">
-            <h3>转化率（日同比 28% <span class="layui-edge layui-edge-top" lay-tips="增长" lay-offset="-15"></span>）</h3>
+            <h3>用户激活转化率（日同比 28% <span class="layui-edge layui-edge-top" lay-tips="增长" lay-offset="-15"></span>）</h3>
             <div class="layui-progress-bar" lay-percent="65%"></div>
           </div>
           <div class="layui-progress" lay-showPercent="yes">
-            <h3>签到率（日同比 11% <span class="layui-edge layui-edge-bottom" lay-tips="下降" lay-offset="-15"></span>）</h3>
+            <h3>激活码使用率（日同比 11% <span class="layui-edge layui-edge-bottom" lay-tips="下降" lay-offset="-15"></span>）</h3>
             <div class="layui-progress-bar" lay-percent="32%"></div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="layui-card">
-        <div class="layui-card-header">实时监控</div>
-        <div class="layui-card-body layadmin-takerates">
-          <div class="layui-progress" lay-showPercent="yes">
-            <h3>CPU使用率</h3>
-            <div class="layui-progress-bar" lay-percent="58%"></div>
-          </div>
-          <div class="layui-progress" lay-showPercent="yes">
-            <h3>内存占用率</h3>
-            <div class="layui-progress-bar layui-bg-red" lay-percent="90%"></div>
           </div>
         </div>
       </div>

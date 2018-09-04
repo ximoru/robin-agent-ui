@@ -1,0 +1,116 @@
+<script type="text/html" template>
+    <link rel="stylesheet" href="{{ layui.setter.base }}style/treetable.css?v={{ layui.admin.v }}-1" media="all">
+</script>
+
+<title>我的代理</title>
+
+<div class="layui-card layadmin-header">
+  <div class="layui-breadcrumb" lay-filter="breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>客户管理</cite></a>
+    <a><cite>我的代理</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">
+  <div class="layui-card">
+    <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layadmin-userfront-formlist">
+      <div class="layui-form-item" style="text-align: right">
+        <div class="layui-inline" style="float: left">
+            <div class="layui-btn-group">
+                <button class="layui-btn" id="btn-expand">全部展开</button>
+                <button class="layui-btn" id="btn-fold">全部折叠</button>
+            </div>
+        </div>
+        <div class="layui-inline">
+          <div class="layui-input-block">
+            <input type="text" name="username" placeholder="请输入关键字" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-inline">
+            <button class="layui-btn" id="btn-search">&nbsp;&nbsp;搜索&nbsp;&nbsp;</button>
+
+            <button class="layui-btn">重置</button>
+        </div>
+      </div>
+    </div>
+    <div class="layui-card-body">
+        <table id="auth-table" class="layui-table" lay-filter="auth-table"></table>
+    </div>
+  </div>
+</div>
+
+<script>
+layui.use(['table', 'treetable', 'element'], function () {
+        var $ = layui.jquery;
+        var table = layui.table;
+        var treetable = layui.treetable;
+        var element = layui.element;
+
+
+    // 渲染表格
+        layer.load(2);
+        treetable.render({
+            treeColIndex: 1,
+            treeSpid: -1,
+            treeIdName: 'authorityId',
+            treePidName: 'parentId',
+            elem: '#auth-table',
+            url: 'json/member/member.json',
+            page: false,
+            cols: [[
+                {type: 'numbers'},
+                {field: 'authorityName', minWidth: 250, title: '代理'},
+                {field: 'role', title: '角色'},
+                {field: 'name', title: '姓名'},
+                {field: 'username', title: '用户名'},
+                {field: 'monthly_contribution', title: '月贡献收益'},
+                {field: 'activation', title: '激活会员'},
+                // {field: 'remaining', title: '剩余激活码'},
+                {field: 'remaining', width: 200, templet: '#selectTpl', title: '剩余激活码'},
+                {field: 'created_at', title: '注册时间'},
+                {field: 'status', title: '状态'},
+            ]],
+            done: function () {
+                layer.closeAll('loading');
+                element.init();
+            }
+        });
+
+        $('#btn-expand').click(function () {
+            treetable.expandAll('#auth-table');
+        });
+
+        $('#btn-fold').click(function () {
+            treetable.foldAll('#auth-table');
+        });
+
+        $('#btn-search').click(function () {
+            var keyword = $('#edt-search').val();
+            var searchCount = 0;
+            $('#auth-table').next('.treeTable').find('.layui-table-body tbody tr td').each(function () {
+                $(this).css('background-color', 'transparent');
+                var text = $(this).text();
+                if (keyword != '' && text.indexOf(keyword) >= 0) {
+                    $(this).css('background-color', 'rgba(250,230,160,0.5)');
+                    if (searchCount == 0) {
+                        treetable.expandAll('#auth-table');
+                        $('html,body').stop(true);
+                        $('html,body').animate({scrollTop: $(this).offset().top - 150}, 500);
+                    }
+                    searchCount++;
+                }
+            });
+            if (keyword == '') {
+                layer.msg("请输入搜索内容", {icon: 5});
+            } else if (searchCount == 0) {
+                layer.msg("没有匹配结果", {icon: 5});
+            }
+        });
+    });
+</script>
+<script type="text/html" id="selectTpl">
+    <div class="layui-progress layui-progress-big" style="height: 15px;margin-top: 6px" lay-showPercent="yes">
+        <div class="layui-progress-bar" style="height: 15px;" lay-percent="5000/7000"></div>
+    </div>
+</script>

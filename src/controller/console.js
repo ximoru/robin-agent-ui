@@ -51,7 +51,7 @@ layui.define(function(exports){
       //今日流量趋势
       {
         title: {
-          text: '今日流量趋势',
+          text: '今日收益趋势',
           x: 'center',
           textStyle: {
             fontSize: 14
@@ -89,7 +89,7 @@ layui.define(function(exports){
       //访客浏览器分布
       { 
         title : {
-          text: '访客浏览器分布',
+          text: '用户类型分布',
           x: 'center',
           textStyle: {
             fontSize: 14
@@ -102,19 +102,19 @@ layui.define(function(exports){
         legend: {
           orient : 'vertical',
           x : 'left',
-          data:['Chrome','Firefox','IE 8.0','Safari','其它浏览器']
+          data:['财富顾问','城市加盟商','城市品牌商','省品牌商','联合创始人']
         },
         series : [{
-          name:'访问来源',
+          name:'用户类型',
           type:'pie',
           radius : '55%',
           center: ['50%', '50%'],
           data:[
-            {value:9052, name:'Chrome'},
-            {value:1610, name:'Firefox'},
-            {value:3200, name:'IE 8.0'},
-            {value:535, name:'Safari'},
-            {value:1700, name:'其它浏览器'}
+            {value:9052, name:'财富顾问'},
+            {value:1610, name:'城市加盟商'},
+            {value:3200, name:'城市品牌商'},
+            {value:535, name:'省品牌商'},
+            {value:1700, name:'联合创始人'}
           ]
         }]
       },
