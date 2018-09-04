@@ -44,6 +44,45 @@
     </div>
 </div>
 
+<script type="text/html" id="layui-form">
+    <form class="layui-form" style="margin-right: 50px;margin-top: 10px;">
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机号：</label>
+            <div class="layui-input-block">
+                <input type="text" name="phone" lay-verify="required|phone|number" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+                <div class=" layui-word-aux">（APP的登录账户，请输入有效的手机号码，默认密码手机号后6位）</div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">验证码：</label>
+            <div class="layui-input-block">
+                <input type="text" name="code" lay-verify="required|code|number" placeholder="请输入短信验证码" autocomplete="off" class="layui-input" style="width: 300px;display: inline-block;">
+                <button class="layui-btn" style="float: right;"> 发送验证码 </button>
+                <div class=" layui-word-aux">（手机验证码）</div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">真实姓名：</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" lay-verify="required" placeholder="请输入真实姓名" autocomplete="off" class="layui-input">
+                <div class=" layui-word-aux">（真实姓名）</div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">身份证号：</label>
+            <div class="layui-input-block">
+                <input type="text" name="id_card" lay-verify="required|idcard" placeholder="请输入身份证号" autocomplete="off" class="layui-input">
+                <div class=" layui-word-aux">（身份证号）</div>
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-top: 38px">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="submit_go">立即提交</button>
+                <!--<button type="reset" id="reset_btn" class="layui-btn layui-btn-primary">取消</button>-->
+            </div>
+        </div>
+    </form>
+</script>
 <script>
     layui.use(['laydate', 'form', 'table'], function () {
         var $ = layui.jquery;
@@ -52,6 +91,26 @@
         var table = layui.table;
 
         form.render();
+        form.verify({
+            code: [
+                /^[\S]{4}$/
+                ,'验证码必须4位，且不能出现空格'
+            ],
+            idcard: [
+                /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}$)/
+                ,'请输入正确的身份证号码'
+            ]
+        });
+        form.on('submit(submit_go)', function(data){
+            console.log(data);
+            console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+            if (false) { // 请求数据是否成功
+                layer.closeAll('page'); //关闭信息框
+            } else {
+                return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+            }
+        });
+
         laydate.render({
             elem: '#test6'
             , range: true
@@ -85,46 +144,19 @@
             layer.open({
                 type: 1,
                 area: ['600px', '450px'],
-                content: `<form class="layui-form" style="margin-right: 50px;margin-top: 10px;">
-  <div class="layui-form-item">
-    <label class="layui-form-label">手机号：</label>
-    <div class="layui-input-block">
-      <input type="text" name="" placeholder="请输入手机号" autocomplete="off" class="layui-input">
-        <div class=" layui-word-aux">（APP的登录账户，请输入有效的手机号码，默认密码手机号后6位）</div>
-    </div>
-  </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">验证码：</label>
-    <div class="layui-input-block">
-      <input type="text" name="" placeholder="请输入短信验证码" autocomplete="off" class="layui-input" style="width: 300px;display: inline-block;">
-      <button class="layui-btn" style="float: right;"> 发送验证码 </button>
-      <div class=" layui-word-aux">（手机验证码）</div>
-    </div>
-  </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">真实姓名：</label>
-    <div class="layui-input-block">
-      <input type="text" name="" placeholder="请输入真实姓名" autocomplete="off" class="layui-input">
-        <div class=" layui-word-aux">（真实姓名）</div>
-    </div>
-  </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">身份证号：</label>
-    <div class="layui-input-block">
-      <input type="text" name="" placeholder="请输入身份证号" autocomplete="off" class="layui-input">
-        <div class=" layui-word-aux">（身份证号）</div>
-    </div>
-  </div>
-  <div class="layui-form-item">
-    <div class="layui-input-block">
-      <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
-      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-    </div>
-  </div>
-  <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
-</form>`
+                content: $('#layui-form').html()
             });
         });
-
     });
 </script>
+<style>
+    body .demo-class .layui-layer-btn .layui-layer-btn0 {
+        background: #009688;
+        border: #009688;
+    }
+
+    body .demo-class .layui-layer-btn .layui-layer-btn0:hover {
+        opacity: .8;
+    }
+
+</style>
