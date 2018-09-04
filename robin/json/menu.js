@@ -18,5 +18,22 @@
         ,"jump": "member/list"
       }
     ]
+  },
+  {
+    "name": "accout"
+    ,"title": "我的管理"
+    ,"icon": "layui-icon-user"
+    ,"list": [
+      {
+        "name": "accout"
+        ,"title": "我的账户"
+        ,"jump": "accout/hous"
+      }
+      ,{
+        "name": "accout"
+        ,"title": "升级通知"
+        ,"jump": "accout/hous"
+      }
+    ]
   }]
 }
