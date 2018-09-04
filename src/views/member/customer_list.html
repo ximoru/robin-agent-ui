@@ -69,7 +69,7 @@
             elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
             ,url: 'json/member/customer_list.json'
             ,cols: [[
-                {field: 'id', title: 'ID'}
+                {field: 'id', title: '序号',}
                 ,{field: 'type', title: '客户类型'}
                 ,{field: 'phone', title: '手机号'}
                 ,{field: 'nickname', title: '客户昵称'}
@@ -77,6 +77,11 @@
                 ,{field: 'created_at', title: '注册时间'}
                 ,{field: 'status', title: '是否激活'}
                 ,{field: 'updated_at', title: '激活时间'}
+                , {
+                    field: 'operation', width: 100, align: 'center', templet: function (d) {
+                        return '<button class="layui-btn layui-btn-xs">我要升级</button>';
+                    }, title: '操作'
+                }
             ]], //设置表头
         });
     });
