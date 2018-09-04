@@ -5,16 +5,26 @@
     "data": [
       {
         "authorityId": 1,
-        "authorityName": "我的代理",
-        "parentId": -1
-      },
-      {
-        "authorityId": 2,
         "authorityName": "省品牌—S1",
         "role": "省品牌",
         "name": "S1",
         "username": "S1",
-        "monthly_contribution": "0",
+        "code_money": "0",
+        "commission": "0",
+        "activation": "0（0）",
+        "remaining": "700",
+        "created_at": "2018-07-10",
+        "status": "有效",
+        "parentId": -1
+      },
+      {
+        "authorityId": 2,
+        "authorityName": "品牌商—C1",
+        "role": "品牌商",
+        "name": "C1",
+        "username": "C1",
+        "code_money": "0",
+        "commission": "0",
         "activation": "0（0）",
         "remaining": "700",
         "created_at": "2018-07-10",
@@ -23,11 +33,12 @@
       },
       {
         "authorityId": 3,
-        "authorityName": "品牌商—C1",
-        "role": "品牌商",
-        "name": "C1",
-        "username": "C1",
-        "monthly_contribution": "0",
+        "authorityName": "加盟商—J1",
+        "role": "加盟商",
+        "name": "J1",
+        "username": "J1",
+        "code_money": "0",
+        "commission": "0",
         "activation": "0（0）",
         "remaining": "700",
         "created_at": "2018-07-10",
@@ -36,55 +47,45 @@
       },
       {
         "authorityId": 4,
-        "authorityName": "加盟商—J1",
-        "role": "加盟商",
-        "name": "J1",
-        "username": "J1",
-        "monthly_contribution": "0",
-        "activation": "0（0）",
-        "remaining": "700",
-        "created_at": "2018-07-10",
-        "status": "有效",
-        "parentId": 3
-      },
-      {
-        "authorityId": 5,
         "authorityName": "品牌商—Q5",
         "role": "品牌商",
         "name": "Q5",
         "username": "Q5",
-        "monthly_contribution": "0",
+        "code_money": "0",
+        "commission": "0",
         "activation": "0（0）",
         "remaining": "700",
         "created_at": "2018-07-10",
         "status": "有效",
-        "parentId": 1
+        "parentId": -1
       },
       {
-        "authorityId": 6,
+        "authorityId": 5,
         "authorityName": "品牌商—南京",
         "role": "品牌商",
         "name": "南京",
         "username": "南京",
-        "monthly_contribution": "0",
+        "code_money": "0",
+        "commission": "0",
         "activation": "0（0）",
         "remaining": "700",
         "created_at": "2018-07-10",
         "status": "有效",
-        "parentId": 1
+        "parentId": -1
       },
       {
-        "authorityId": 7,
+        "authorityId": 6,
         "authorityName": "品牌商—加盟商111",
         "role": "品牌商",
         "name": "加盟商111",
         "username": "加盟商111",
-        "monthly_contribution": "0",
+        "code_money": "0",
+        "commission": "0",
         "activation": "0（0）",
         "remaining": "700",
         "created_at": "2018-07-10",
         "status": "有效",
-        "parentId": 6
+        "parentId": 5
       }
     ]
   }
