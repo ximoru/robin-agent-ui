@@ -30,7 +30,7 @@ pipeline {
         sh 'ssh root@47.104.80.136 mkdir -p /home/wwwroot/temp_deploy'
         sh 'scp -r release/current root@47.104.80.136:/home/wwwroot/temp_deploy/current/'
         sh 'ssh root@47.104.80.136 "rm -rf /home/wwwroot/robin-agent-dev.laralab.org/* && mv /home/wwwroot/temp_deploy/current/* /home/wwwroot/robin-agent-dev.laralab.org/"'
-        dingTalk accessToken: 'd856d34f014618d97672ed967de530b55a4f5d1d754e7c7b3234c6dceeec2250', message: 'Deploy Done'
+        dingTalk accessToken: 'd856d34f014618d97672ed967de530b55a4f5d1d754e7c7b3234c6dceeec2250', imageUrl: 'http://www.iconsdb.com/icons/preview/soylent-red/x-mark-3-xxl.png', jenkinsUrl: 'http://ci.laralab.org', message: 'Deploy Done', notifyPeople: ''
       }
     }
   }
