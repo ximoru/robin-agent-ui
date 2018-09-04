@@ -1,0 +1,85 @@
+<script type="text/html" template>
+    <link rel="stylesheet" href="{{ layui.setter.base }}style/treetable.css?v={{ layui.admin.v }}-1" media="all">
+</script>
+
+<title>我的激活码</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>我的管理</cite></a>
+        <a><cite>我的激活码</cite></a>
+        <a><cite style="color:#f10813">剩余激活码：<span>6520</span>个</cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layadmin-userfront-formlist">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">使用场景：</label>
+                    <div class="layui-input-block">
+                    <select name="status">
+                        <option value="">全部</option>
+                        <option value="1">转入</option>
+                        <option value="2">转出</option>
+                        <option value="3">使用</option>
+                        <option value="4">回收</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">创建：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="test6" placeholder=" - ">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <div class="layui-input-block">
+                        <input type="text" name="username" placeholder="用途" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn" id="btn-search">&nbsp;&nbsp;查询&nbsp;&nbsp;</button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-card-body">
+            <table id="demo" lay-filter="test"></table>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use(['laydate', 'form', 'table'], function () {
+        var $ = layui.jquery;
+        var laydate = layui.laydate; // 选择日期和时间组件
+        var form = layui.form;
+        var table = layui.table;
+
+        form.render();
+        laydate.render({
+            elem: '#test6'
+            , range: true
+        });
+
+        //执行渲染 （实例 -- 方法渲染）
+
+        table.render({
+            elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
+            ,url: 'json/account/account_code.json'
+            ,page: true // 开启分页
+            ,cols: [[
+                {field: 'id', title: '序号'}
+                ,{field: 'code', title: '订单编号'}
+                ,{field: 'type', title: '类型'}
+                ,{field: 'number', title: '数量'}
+                ,{field: 'use', title: '用途'}
+                ,{field: 'operation', title: '操作人'}
+                ,{field: 'operation_time', title: '操作时间'}
+                ,{field: 'note', title: '备注'}
+            ]], //设置表头
+        });
+    });
+</script>

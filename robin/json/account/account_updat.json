@@ -1,0 +1,17 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 19,
+  "data": [
+    {
+      "id": "1",
+      "type": "财富顾问",
+      "current_level": "3",
+      "after_level": "5",
+      "yuji_time": "10天",
+      "created_time": "2018-07-31 15:29",
+      "status": "已激活",
+      "operation": ""
+    }
+  ]
+}
