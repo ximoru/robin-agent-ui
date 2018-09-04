@@ -40,19 +40,39 @@
     ]
   },
   {
-    "name": "accout"
+    "name": "account"
     ,"title": "我的管理"
-    ,"icon": "layui-icon-user"
+    ,"icon": "layui-icon-username"
     ,"list": [
       {
-        "name": "accout"
+        "name": "accountHous"
         ,"title": "我的账户"
-        ,"jump": "accout/hous"
+        ,"jump": "account/account_hous"
       }
       ,{
-        "name": "accout"
+        "name": "accountUpdat"
         ,"title": "升级通知"
-        ,"jump": "accout/hous"
+        ,"jump": "account/account_updat"
+      }
+      ,{
+        "name": "accountEarning"
+        ,"title": "我的收益"
+        ,"jump": "account/account_earning"
+      }
+      ,{
+        "name": "accountCode"
+        ,"title": "我的激活码"
+        ,"jump": "account/account_code"
+      }
+      ,{
+        "name": "accountRecord"
+        ,"title": "提现记录"
+        ,"jump": "account/account_record"
+      }
+      ,{
+        "name": "accountCard"
+        ,"title": "我的提现卡"
+        ,"jump": "account/account_card"
       }
     ]
   }]
