@@ -71,8 +71,8 @@
             <div class="layui-card-body">
               <div class="layui-carousel layadmin-carousel layadmin-dataview" data-anim="fade" lay-filter="LAY-index-dataview">
                 <div carousel-item id="LAY-index-dataview">
-                  <div><i class="layui-icon layui-icon-loading1 layadmin-loading"></i></div>
-                  <div></div>
+                  <!--<div><i class="layui-icon layui-icon-loading1 layadmin-loading"></i></div>-->
+                  <!--<div></div>-->
                   <div></div>
                 </div>
               </div>
@@ -81,7 +81,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="layui-col-md4">
       <div class="layui-card">
         <div class="layui-card-header">系统信息</div>
@@ -94,23 +94,17 @@
             <tbody>
               <tr>
                 <td>系统版本</td>
-                <td>
-                  <script type="text/html" template>
-                    v{{ layui.cache.version }}
-                  </script>
+                <td id="version">
                 </td>
               </tr>
               <tr>
                 <td>联系电话</td>
-                <td>
-                  <script type="text/html" template>
-                    13888888888
-                  </script>
+                <td id="phone">
                </td>
               </tr>
               <tr>
                 <td>客服 QQ</td>
-                <td>88888888 / 66666666</td>
+                <td id="qq"></td>
               </tr>
               <tr>
                 <td>APP下载</td>
@@ -125,7 +119,7 @@
           </table>
         </div>
       </div>
-      
+
       <div class="layui-card">
         <div class="layui-card-header">效果报告</div>
         <div class="layui-card-body layadmin-takerates">
@@ -152,13 +146,30 @@
     然而该页面的视图则是重新插入到容器，那如何保证能重新来控制视图？有两种方式：
       1): 借助 layui.factory 方法获取 console 模块的工厂（回调函数）给 layui.use
       2): 直接在 layui.use 方法的回调中书写业务代码，即:
-          layui.use('console', function(){ 
-            //同 console.js 中的 layui.define 回调中的代码 
+          layui.use('console', function(){
+            //同 console.js 中的 layui.define 回调中的代码
           });
-          
+
   这里我们采用的是方式1。其它很多视图中采用的其实都是方式2，因为更简单些，也减少了一个请求数。
-  
+
 */
-layui.use('console', layui.factory('console'));
+layui.use('console', function () {
+    var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
+    var $ = layui.$;
+
+    // 获取系统信息
+    $.ajax({
+        url: layui.api + 'agent/api/home/info',
+        type: 'get',
+        headers: {'Authorization': 'Bearer ' + token},
+        dataType: 'json',
+        success: function (data) {
+            var requset_data = data.data;
+            $('#version').html(requset_data.version);
+            $('#phone').html(requset_data.phone);
+            $('#qq').html(requset_data.qq);
+        }
+    });
+});
 </script>
 
