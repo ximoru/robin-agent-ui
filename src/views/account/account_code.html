@@ -9,7 +9,6 @@
         <a lay-href="">主页</a>
         <a><cite>我的管理</cite></a>
         <a><cite>我的激活码</cite></a>
-        <a><cite style="color:#f10813">剩余激活码：<span>6520</span>个</cite></a>
     </div>
 </div>
 
@@ -80,6 +79,28 @@
                 ,{field: 'operation_time', title: '操作时间'}
                 ,{field: 'note', title: '备注'}
             ]], //设置表头
+        });
+        $('#btn-search').click(function () {
+            var keyword = $('#edt-search').val();
+            var searchCount = 0;
+            $('#auth-table').next('.treeTable').find('.layui-table-body tbody tr td').each(function () {
+                $(this).css('background-color', 'transparent');
+                var text = $(this).text();
+                if (keyword != '' && text.indexOf(keyword) >= 0) {
+                    $(this).css('background-color', 'rgba(250,230,160,0.5)');
+                    if (searchCount == 0) {
+                        treetable.expandAll('#auth-table');
+                        $('html,body').stop(true);
+                        $('html,body').animate({scrollTop: $(this).offset().top - 150}, 500);
+                    }
+                    searchCount++;
+                }
+            });
+            if (keyword == '') {
+                layer.msg("请输入搜索内容", {icon: 5});
+            } else if (searchCount == 0) {
+                layer.msg("没有匹配结果", {icon: 5});
+            }
         });
     });
 </script>

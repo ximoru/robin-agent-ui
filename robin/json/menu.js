@@ -45,14 +45,14 @@
     ,"icon": "layui-icon-username"
     ,"list": [
       {
-        "name": "accountHous"
+        "name": "account"
         ,"title": "我的账户"
-        ,"jump": "account/account_hous"
+        ,"jump": "account/account"
       }
       ,{
-        "name": "accountUpdat"
+        "name": "accountUpdate"
         ,"title": "升级通知"
-        ,"jump": "account/account_updat"
+        ,"jump": "account/account_update"
       }
       ,{
         "name": "accountEarning"
