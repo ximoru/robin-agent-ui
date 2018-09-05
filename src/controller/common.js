@@ -16,16 +16,16 @@ layui.define(function (exports) {
         , admin = layui.admin
 
     //公共业务的逻辑处理可以写在此处，切换任何页面都会执行
-    var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
     //……
 
 
     //退出
     admin.events.logout = function () {
+        var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
         //执行退出接口
         admin.req({
             url: layui.api + 'agent/api/logout'
-            , type: 'get'
+            , type: 'post'
             , headers: {'Authorization': 'Bearer ' + token}
             , data: {}
             // , done: function (res) { //这里要说明一下：done 是只有 response 的 code 正常才会执行。而 succese 则是只要 http 为 200 就会执行

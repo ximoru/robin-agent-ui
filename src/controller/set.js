@@ -94,7 +94,6 @@ layui.define(['form', 'upload'], function (exports) {
             , headers: {'Authorization': 'Bearer ' + token}
             , data: obj.field
             , success: function (res) {
-                console.log(res);
                 if (res.code == 200) {
                     layer.msg('修改成功', {
                         offset: '15px'
@@ -145,18 +144,31 @@ layui.define(['form', 'upload'], function (exports) {
 
     //设置密码
     form.on('submit(setmypass)', function (obj) {
-        layer.msg(JSON.stringify(obj.field));
-
         //提交修改
-        /*
         admin.req({
-          url: ''
-          ,data: obj.field
-          ,success: function(){
+            url: layui.api + 'agent/api/user/password'
+            , type: 'post'
+            , headers: {'Authorization': 'Bearer ' + token}
+            , data: obj.field
+            , success: function (res) {
+                if (res.code == 200) {
+                    layer.msg(res.msg, {
+                        offset: '15px'
+                        ,icon: 1
+                        ,time: 1000
+                    }, function(){
+                        admin.events.logout();
+                    });
+                } else {
+                    layer.msg(res.msg, {
+                        offset: '15px'
+                        ,icon: 2
+                        ,time: 1000
+                    });
+                }
 
-          }
+            }
         });
-        */
         return false;
     });
 
