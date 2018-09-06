@@ -121,4 +121,4 @@ layui.define(['laytpl', 'layer', 'element', 'util'], function(exports){
   });
 });
 
-layui.api = 'http://api.robin.laralab.org/';
+layui.api = 'http://robinFin-api.test/';

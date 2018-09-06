@@ -81,67 +81,32 @@
         </div>
     </div>
 </div>
-    <script>
-        var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
-        var $ = layui.$;
-        $.ajax({
-            url: layui.api + 'agent/api/my/account',
-            type: 'get',
-            headers: {'Authorization': 'Bearer ' + token},
-            dataType: 'json',
-            success: function (data) {
-                var requset_data = data.data;
-                console.log(requset_data.portrait);
-                $('#portrait').attr('src',requset_data.portrait == null ? 'http://bpic.588ku.com/element_origin_min_pic/01/48/88/2757444507812f6.jpg' : requset_data.portrait);
-                $('#nickname').html(requset_data.nickname);
-                $('#total_balance').html(requset_data.total_balance);
-                $('#balance').html(requset_data.balance);
-                $('#status').html(requset_data.status == 1 ? '正常' : '未激活');
-                $('#phone').html(requset_data.phone);
-                $('#area').html(requset_data.area);
-                $('#promote_code').html(requset_data.promote_code);
-                $('#realname').html(requset_data.realname);
-                $('#identification').html(requset_data.identification);
-                $('#created_at').html(requset_data.created_at);
-                $('#remaining_tickets').html(requset_data.remaining_tickets);
-                $('#users').html(requset_data.users);
-                $('#activationUsers').html(requset_data.activationUsers);
-                $('#position').html(requset_data.position);
-            }
-        });
-    </script>
-    <!-- <script>
-        layui.use(['laydate', 'form', 'table'], function () {
-            var $ = layui.jquery;
-            var laydate = layui.laydate; // 选择日期和时间组件
-            var form = layui.form;
-            var table = layui.table;
-
-            form.render();
-            laydate.render({
-                elem: '#test6'
-                , range: true
-            });
-
-            //执行渲染 （实例 -- 方法渲染）
-
-            table.render({
-                elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
-                ,url: 'json/account/account_updat.json'
-                ,page: false // 开启分页
-                ,cols: [[
-                    {field: 'id', title: '序号'}
-                    ,{field: 'type', title: '升级类型'}
-                    ,{field: 'current_level', title: '当前等级'}
-                    ,{field: 'after_level', title: '升级后等级'}
-                    ,{field: 'yuji_time', title: '预计升级时间'}
-                    ,{field: 'created_time', title: '申请时间'}
-                    ,{field: 'status', title: '状态'}
-                    ,{field: 'operation', width: 180, align: 'center', templet: function (d) {
-                            return '<button class="layui-btn layui-btn-xs">已升级</button><button class="layui-btn layui-btn-xs">要升级</button>';
-                        }, title: '操作'}
-                ]], //设置表头
-            });
-        });
-    </script> -->
-
+<script>
+    var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
+    var $ = layui.$;
+    $.ajax({
+        url: layui.api + 'agent/api/my/account',
+        type: 'get',
+        headers: {'Authorization': 'Bearer ' + token},
+        dataType: 'json',
+        success: function (data) {
+            var requset_data = data.data;
+            console.log(requset_data.portrait);
+            $('#portrait').attr('src', requset_data.portrait == null ? 'http://bpic.588ku.com/element_origin_min_pic/01/48/88/2757444507812f6.jpg' : requset_data.portrait);
+            $('#nickname').html(requset_data.nickname);
+            $('#total_balance').html(requset_data.total_balance);
+            $('#balance').html(requset_data.balance);
+            $('#status').html(requset_data.status == 1 ? '正常' : '未激活');
+            $('#phone').html(requset_data.phone);
+            $('#area').html(requset_data.area);
+            $('#promote_code').html(requset_data.promote_code);
+            $('#realname').html(requset_data.realname);
+            $('#identification').html(requset_data.identification);
+            $('#created_at').html(requset_data.created_at);
+            $('#remaining_tickets').html(requset_data.remaining_tickets);
+            $('#users').html(requset_data.users);
+            $('#activationUsers').html(requset_data.activationUsers);
+            $('#position').html(requset_data.position);
+        }
+    });
+</script>
