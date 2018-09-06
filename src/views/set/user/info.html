@@ -86,13 +86,9 @@ $.ajax({
         } else {
             $('#phone').val(requset_data.phone);
             $('#nickname').val(requset_data.nickname);
-            if (requset_data.portrait == "" || requset_data.portrait == null) {
-                $('#portrait_img').attr("src", 'http://bpic.588ku.com/element_origin_min_pic/01/48/88/2757444507812f6.jpg');
-                $('#portrait').val('');
-            } else {
-                $('#portrait_img').attr("src", requset_data.portrait);
-                $('#portrait').val(requset_data.portrait);
-            }
+
+            $('#portrait_img').attr("src", requset_data.portrait == null ? 'http://bpic.588ku.com/element_origin_min_pic/01/48/88/2757444507812f6.jpg' : requset_data.portrait);
+            $('#portrait').val(requset_data.portrait == null ? '' : requset_data.portrait);
         }
     }
 });
