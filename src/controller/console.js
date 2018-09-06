@@ -199,23 +199,24 @@ layui.define(function (exports) {
                 carousel.on('change(LAY-index-dataview)', function (obj) {
                     renderDataView(carouselIndex = obj.index);
                 });
+
+
+                //监听侧边伸缩
+                layui.admin.on('side', function () {
+                    setTimeout(function () {
+                        renderDataView(carouselIndex);
+                    }, 300);
+                });
+
+
+                //监听路由
+                layui.admin.on('hash(tab)', function () {
+                    layui.router().path.join('') || renderDataView(carouselIndex);
+                });
             }
         });
 
 
-
-
-        //监听侧边伸缩
-        layui.admin.on('side', function () {
-            setTimeout(function () {
-                renderDataView(carouselIndex);
-            }, 300);
-        });
-
-        //监听路由
-        layui.admin.on('hash(tab)', function () {
-            layui.router().path.join('') || renderDataView(carouselIndex);
-        });
     });
     exports('console', {})
 });
