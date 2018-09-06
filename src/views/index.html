@@ -140,59 +140,60 @@
             </div>
         </div>
     </div>
+</div>
+
+<script>
+    //加载 controller 目录下的对应模块
+    /*
+
+      小贴士：
+        这里 console 模块对应 的 console.js 并不会重复加载，
+        然而该页面的视图则是重新插入到容器，那如何保证能重新来控制视图？有两种方式：
+          1): 借助 layui.factory 方法获取 console 模块的工厂（回调函数）给 layui.use
+          2): 直接在 layui.use 方法的回调中书写业务代码，即:
+              layui.use('console', function(){
+                //同 console.js 中的 layui.define 回调中的代码
+              });
+
+      这里我们采用的是方式1。其它很多视图中采用的其实都是方式2，因为更简单些，也减少了一个请求数。
+
+    */
+    layui.use('console', layui.factory('console'));
+    var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
+    var $ = layui.$;
 
 
-    <script>
-        //加载 controller 目录下的对应模块
-        /*
+    // 获取系统信息
+    $.ajax({
+        url: layui.api + 'agent/api/home/info',
+        type: 'get',
+        headers: {'Authorization': 'Bearer ' + token},
+        dataType: 'json',
+        success: function (data) {
+            var requset_data = data.data;
+            $('#version').html(requset_data.version);
+            $('#phone').html(requset_data.phone);
+            $('#qq').html(requset_data.qq);
+        }
+    });
 
-          小贴士：
-            这里 console 模块对应 的 console.js 并不会重复加载，
-            然而该页面的视图则是重新插入到容器，那如何保证能重新来控制视图？有两种方式：
-              1): 借助 layui.factory 方法获取 console 模块的工厂（回调函数）给 layui.use
-              2): 直接在 layui.use 方法的回调中书写业务代码，即:
-                  layui.use('console', function(){
-                    //同 console.js 中的 layui.define 回调中的代码
-                  });
-
-          这里我们采用的是方式1。其它很多视图中采用的其实都是方式2，因为更简单些，也减少了一个请求数。
-
-        */
-        layui.use('console', function () {
-            var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
-            var $ = layui.$;
-
-            // 获取系统信息
-            $.ajax({
-                url: layui.api + 'agent/api/home/info',
-                type: 'get',
-                headers: {'Authorization': 'Bearer ' + token},
-                dataType: 'json',
-                success: function (data) {
-                    var requset_data = data.data;
-                    $('#version').html(requset_data.version);
-                    $('#phone').html(requset_data.phone);
-                    $('#qq').html(requset_data.qq);
-                }
-            });
-
-            $.ajax({
-                url: layui.api + 'agent/api/home/statistics',
-                type: 'get',
-                headers: {'Authorization': 'Bearer ' + token},
-                dataType: 'json',
-                success: function (data) {
-                    var requset_data = data.data;
-                    $('#activationUser').html(requset_data.activationUser);
-                    $('#balance').html(requset_data.balance);
-                    $('#countUser').html(requset_data.countUser);
-                    $('#remainingTickets').html(requset_data.remainingTickets);
-                    $('#todayActivationUser').html(requset_data.todayActivationUser);
-                    $('#todayBalance').html(requset_data.todayBalance);
-                    $('#totalBalance').html(requset_data.totalBalance);
-                //    TODO：缺少累计提现
-                }
-            });
-        });
-    </script>
+    // 获取控制台嘻嘻
+    $.ajax({
+        url: layui.api + 'agent/api/home/statistics',
+        type: 'get',
+        headers: {'Authorization': 'Bearer ' + token},
+        dataType: 'json',
+        success: function (data) {
+            var requset_data = data.data;
+            $('#activationUser').html(requset_data.activationUser);
+            $('#balance').html(requset_data.balance);
+            $('#countUser').html(requset_data.countUser);
+            $('#remainingTickets').html(requset_data.remainingTickets);
+            $('#todayActivationUser').html(requset_data.todayActivationUser);
+            $('#todayBalance').html(requset_data.todayBalance);
+            $('#totalBalance').html(requset_data.totalBalance);
+            //    TODO：缺少累计提现
+        }
+    });
+</script>
 
