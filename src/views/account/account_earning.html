@@ -17,7 +17,7 @@
         <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layadmin-userfront-formlist">
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <button class="layui-btn" id="add_tixian">我要提现</button>
+                    <button class="layui-btn" id="add_tixian" lay-href="account/account_withdrawal">我要提现</button>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">收益类型：</label>
@@ -52,47 +52,47 @@
         </div>
     </div>
 </div>
-<script type="text/html" id="layui-form-tixian" data-content="data">
-    <div class="layui-form" style="margin-right: 50px;margin-top: 10px;">
-        <div class="layui-form-item">
-            <label class="layui-form-label">姓名：</label>
-            <div class="layui-input-block">
-                Li
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label" style="white-space: nowrap;">身份证号：</label>
-            <div class="layui-input-block">
-                243435435465
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label" style="white-space: nowrap;">可提现金额：</label>
-            <div class="layui-input-block">
-                <input type="text" name="id_card" lay-verify="required|idcard" placeholder="请输入提现金额" autocomplete="off"
-                       class="layui-input">
-                <div class=" layui-word-aux">（请输入提现金额）</div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label" style="white-space: nowrap;">选择提现卡：</label>
-            <div class="layui-input-block">
-                <button type="" class="layui-btn" id="add_tixian_card">添加提现卡</button>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">备注：</label>
-            <div class="layui-input-block">
-                <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
-            </div>
-        </div>
-        <div class="layui-form-item" style="margin-top: 38px">
-            <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="submit_go">立即提交</button>
-            </div>
-        </div>
-    </div>
-</script>
+<!--<script type="text/html" id="layui-form-tixian" data-content="data">-->
+    <!--<div class="layui-form" style="margin-right: 50px;margin-top: 10px;">-->
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">姓名：</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--Li-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label" style="white-space: nowrap;">身份证号：</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--243435435465-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label" style="white-space: nowrap;">可提现金额：</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--<input type="text" name="id_card" lay-verify="required|idcard" placeholder="请输入提现金额" autocomplete="off"-->
+                       <!--class="layui-input">-->
+                <!--<div class=" layui-word-aux">（请输入提现金额）</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label" style="white-space: nowrap;">选择提现卡：</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--<button type="" class="layui-btn" id="add_tixian_card">添加提现卡</button>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">备注：</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--<textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="layui-form-item" style="margin-top: 38px">-->
+            <!--<div class="layui-input-block">-->
+                <!--<button class="layui-btn" lay-submit lay-filter="submit_go">立即提交</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</script>-->
 <script>
     layui.use(['laydate', 'form', 'table'], function () {
         var $ = layui.jquery
@@ -162,14 +162,14 @@
         }
 
         tableData();
-        // 我要提现
-        $("#add_tixian").click(function () {
-            layer.open({
-                type: 1,
-                area: ['500px', '480px'],
-                content: $('#layui-form-tixian').html()
-            });
-            form.render()
-        })
+        // // 我要提现
+        // $("#add_tixian").click(function () {
+        //     layer.open({
+        //         type: 1,
+        //         area: ['500px', '480px'],
+        //         content: $('#layui-form-tixian').html()
+        //     });
+        //     form.render()
+        // })
     });
 </script>

@@ -1,0 +1,157 @@
+<script type="text/html" template>
+    <link rel="stylesheet" href="{{ layui.setter.base }}style/treetable.css?v={{ layui.admin.v }}-1" media="all">
+</script>
+
+<title>我要提现</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>我的管理</cite></a>
+        <a><cite>我要提现 </cite></a>
+    </div>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-card" style="padding: 50px">
+        <div class="layui-form" style="margin-right: 50px;margin-top: 10px;">
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="line-height: 38px">姓名：</label>
+                <div class="layui-input-block" style="line-height: 58px" id="withdrawal_name">
+
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="white-space: nowrap;">身份证号：</label>
+                <div class="layui-input-block" style="line-height: 38px" id="withdrawal_id_card">
+
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="white-space: nowrap;">可提现金额：</label>
+                <div class="layui-input-block" style="line-height: 30px;font-size: 38px;font-weight: 500;color: red">
+                   <span id="withdrawal_balance"> 0.00 </span>元
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="white-space: nowrap;">现金额：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="withdrawal" lay-verify="required|idcard" placeholder="请输入提现金额" autocomplete="off" class="layui-input">
+                    <div class=" layui-word-aux">（请输入提现金额）</div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="white-space: nowrap;">选择提现卡：</label>
+                <div class="layui-input-block" id="withdrawal_card">
+
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注：</label>
+                <div class="layui-input-block">
+                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item" style="margin-top: 38px">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="submit_go">立即提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use(['form'], function () {
+        var form = layui.form
+            , $ = layui.jquery;
+        form.render();
+
+        //表单提交
+        form.on('submit(submit_go)', function (data) {
+            var money = Number($('#withdrawal_balance').html());
+            var withdrawal = Number(data.field.withdrawal);
+            if (money < withdrawal) {
+                layer.msg('您已超过可提现金额', {
+                    offset: '15px'
+                    , icon: 2
+                    , time: 1000
+                }, function () {
+                });
+            } else if (!data.field.card) {
+                layer.msg('请选择银行卡', {
+                    offset: '15px'
+                    , icon: 2
+                    , time: 1000
+                }, function () {
+                });
+            } else {
+                // 提交表单
+                var data = {
+                    'card': data.field.card.split('#')[0],
+                    'type': data.field.card.split('#')[1],
+                    'withdrawal': withdrawal,
+                    'desc': data.field.desc,
+                };
+                $.ajax({
+                    url: layui.api + 'agent/api/my/withdrawal',
+                    type: 'post',
+                    headers: {'Authorization': 'Bearer ' + token},
+                    data: data,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.code == 200) {
+                            layer.msg(data.msg, {
+                                offset: '15px'
+                                , icon: 1
+                                , time: 1000
+                            }, function () {
+                                location.hash = '/account/account_record';
+                            });
+                        } else {
+                            layer.msg(data.msg, {
+                                offset: '15px'
+                                , icon: 1
+                                , time: 1000
+                            });
+                        }
+                    }
+                });
+            }
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+
+        // 信息显示
+        var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
+
+        $.ajax({
+            url: layui.api + 'agent/api/user/info',
+            type: 'get',
+            headers: {'Authorization': 'Bearer ' + token},
+            dataType: 'json',
+            success: function (data) {
+                if (data.code == 200) {
+                    var requset_data = data.data;
+                    // 添加提现卡信息
+                    $('#withdrawal_name').html(requset_data.nickname);
+                    $('#withdrawal_id_card').html(requset_data.identification);
+                    $('#withdrawal_balance').html(requset_data.wallet.balance);
+                    console.log(requset_data);
+                    if (requset_data.card == null || requset_data.card == []) {
+                        $('#withdrawal_card').html('<button type="" class="layui-btn layui-btn-sm" id="add_tixian_card">添加提现卡</button>');
+                    } else {
+                        $('#withdrawal_card').html(function () {
+                            var $html = '';
+                            for (var i = 0; i < requset_data.card.length; i++) {
+                                var title = (requset_data.card[i].type === 1 ? '银行卡' : (requset_data.card[i].type === 2 ? '支付宝' : requset_data.card[i].type === 3 ? '微信' : '')) + "：" + requset_data.card[i].card_number;
+                                $html += '<input type="radio" name="card" value="'+requset_data.card[i].card_number+ '#' + requset_data.card[i].type +'" title="'+title+'">'
+                            }
+                            return '<div>' + $html + '</div><button type="" class="layui-btn layui-btn-sm" id="add_tixian_card">添加提现卡</button>';
+                        });
+                        form.render();
+                    }
+
+                }
+            }
+        });
+    });
+</script>
