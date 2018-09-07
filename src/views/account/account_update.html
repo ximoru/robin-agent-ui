@@ -9,7 +9,6 @@
         <a lay-href="">主页</a>
         <a><cite>我的管理</cite></a>
         <a><cite>升级通知</cite></a>
-        <a><cite style="color:#f10813">消息个数：<span>0</span></cite></a>
     </div>
 </div>
 
@@ -71,11 +70,33 @@
                 ,{field: 'after_level', title: '升级后等级'}
                 ,{field: 'yuji_time', title: '预计升级时间'}
                 ,{field: 'created_time', title: '申请时间'}
-                ,{field: 'status', title: '状态'}
-                ,{field: 'operation', width: 180, align: 'center', templet: function (d) {
-                        return '<button class="layui-btn layui-btn-xs">已升级</button><button class="layui-btn layui-btn-xs">要升级</button>';
-                    }, title: '操作'}
-            ]], //设置表头
+                ,{field: 'status', title: '状态',templet: function (d) {
+                        return '<button class="layui-btn layui-btn-xs">已升级</button';
+                    }
+                }
+            ]], //设表头
+        });
+        $('#btn-search').click(function () {
+            var keyword = $('#edt-search').val();
+            var searchCount = 0;
+            $('#auth-table').next('.treeTable').find('.layui-table-body tbody tr td').each(function () {
+                $(this).css('background-color', 'transparent');
+                var text = $(this).text();
+                if (keyword != '' && text.indexOf(keyword) >= 0) {
+                    $(this).css('background-color', 'rgba(250,230,160,0.5)');
+                    if (searchCount == 0) {
+                        treetable.expandAll('#auth-table');
+                        $('html,body').stop(true);
+                        $('html,body').animate({scrollTop: $(this).offset().top - 150}, 500);
+                    }
+                    searchCount++;
+                }
+            });
+            if (keyword == '') {
+                layer.msg("请输入搜索内容", {icon: 5});
+            } else if (searchCount == 0) {
+                layer.msg("没有匹配结果", {icon: 5});
+            }
         });
     });
 </script>

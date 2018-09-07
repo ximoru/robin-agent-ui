@@ -1,79 +1,80 @@
 {
-  "code": 0
-  ,"msg": ""
-  ,"data": [
-  {
-    "title": "首页"
-    ,"icon": "layui-icon-home"
-    ,"jump": "/"
-  },
-  {
-    "name": "member"
-    ,"title": "客户管理"
-    ,"icon": "layui-icon-user"
-    ,"list": [
-      {
-        "name": "member"
-        ,"title": "我的代理"
-        ,"jump": "member/list"
-      },
-      {
-        "name": "memberCustomerList"
-        ,"title": "我的客户"
-        ,"jump": "member/customer_list"
-      },
-      {
-        "name": "memberMyWealthAdviserList"
-        ,"title": "我的财富顾问"
-        ,"jump": "member/my_wealth_adviser_list"
-      },
-      {
-        "name": "memberIndirectWealthAdviserList"
-        ,"title": "间接财富顾问"
-        ,"jump": "member/indirect_wealth_adviser_list"
-      },
-      {
-        "name": "memberAdviserList"
-        ,"title": "顾问排行榜"
-        ,"jump": "member/adviser_list"
-      }
-    ]
-  },
-  {
-    "name": "account"
-    ,"title": "我的管理"
-    ,"icon": "layui-icon-username"
-    ,"list": [
-      {
-        "name": "accountHous"
-        ,"title": "我的账户"
-        ,"jump": "account/account_hous"
-      }
-      ,{
-        "name": "accountUpdat"
-        ,"title": "升级通知"
-        ,"jump": "account/account_updat"
-      }
-      ,{
-        "name": "accountEarning"
-        ,"title": "我的收益"
-        ,"jump": "account/account_earning"
-      }
-      ,{
-        "name": "accountCode"
-        ,"title": "我的激活码"
-        ,"jump": "account/account_code"
-      }
-      ,{
-        "name": "accountRecord"
-        ,"title": "提现记录"
-        ,"jump": "account/account_record"
-      }
-      ,{
-        "name": "accountCard"
-        ,"title": "我的提现卡"
-        ,"jump": "account/account_card"
-      }
-    ]
-  }]
+    "code": 200,
+    "msg": "",
+    "data": [
+    {
+        "title": "首页",
+        "icon": "layui-icon-home",
+        "jump": "/"
+    },
+    {
+        "name": "member",
+        "title": "客户管理",
+        "icon": "layui-icon-user",
+        "list": [
+            {
+                "name": "member",
+                "title": "我的代理",
+                "jump": "member/list"
+            },
+            {
+                "name": "memberCustomerList",
+                "title": "我的客户",
+                "jump": "member/customer_list"
+            },
+            {
+                "name": "memberMyWealthAdviserList",
+                "title": "我的财富顾问",
+                "jump": "member/my_wealth_adviser_list"
+            },
+            {
+                "name": "memberIndirectWealthAdviserList",
+                "title": "间接财富顾问",
+                "jump": "member/indirect_wealth_adviser_list"
+            },
+            {
+                "name": "memberAdviserList",
+                "title": "顾问排行榜",
+                "jump": "member/adviser_list"
+            }
+        ]
+    },
+    {
+        "name": "account",
+        "title": "我的管理",
+        "icon": "layui-icon-username",
+        "list": [
+            {
+                "name": "account",
+                "title": "我的账户",
+                "jump": "account/account"
+            },
+            {
+                "name": "accountUpdate",
+                "title": "升级通知",
+                "jump": "account/account_update"
+            },
+            {
+                "name": "accountEarning",
+                "title": "我的收益",
+                "jump": "account/account_earning"
+            },
+            {
+                "name": "accountCode",
+                "title": "我的激活码",
+                "jump": "account/account_code"
+            },
+            {
+                "name": "accountRecord",
+                "title": "提现记录",
+                "jump": "account/account_record"
+            },
+            {
+                "name": "accountCard",
+                "title": "我的提现卡",
+                "jump": "account/account_card"
+            }
+        ]
+    }
+]
 }
