@@ -91,7 +91,6 @@
         dataType: 'json',
         success: function (data) {
             var requset_data = data.data;
-            console.log(requset_data.portrait);
             $('#portrait').attr('src', requset_data.portrait == null ? 'http://bpic.588ku.com/element_origin_min_pic/01/48/88/2757444507812f6.jpg' : requset_data.portrait);
             $('#nickname').html(requset_data.nickname);
             $('#total_balance').html(requset_data.total_balance);

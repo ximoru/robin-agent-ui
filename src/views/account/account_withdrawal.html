@@ -135,7 +135,6 @@
                     $('#withdrawal_name').html(requset_data.nickname);
                     $('#withdrawal_id_card').html(requset_data.identification);
                     $('#withdrawal_balance').html(requset_data.wallet.balance);
-                    console.log(requset_data);
                     if (requset_data.card == null || requset_data.card == []) {
                         $('#withdrawal_card').html('<button type="" class="layui-btn layui-btn-sm" id="add_tixian_card">添加提现卡</button>');
                     } else {

@@ -150,7 +150,6 @@
                     ,{field: 'created_at', title: '提现时间'}
                     ,{field: 'note', title: '备注',templet: function (d) {
                         var statusBtn = '';
-                        console.log(d.agent);
                         if (d.status == 1) {
                             statusBtn = '<button class="layui-btn layui-btn-xs">处理成功</button>'
                         } else if (d.status == 2) {

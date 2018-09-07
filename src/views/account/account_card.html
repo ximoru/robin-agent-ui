@@ -35,23 +35,25 @@
         <div class="layui-form-item" pane>
             <label class="layui-form-label">类型：</label>
             <div class="layui-input-block">
-                <input type="radio" name="sex.id" value="男" title="银行卡">
-                <input type="radio" name="sex.id" value="支付宝" title="支付宝" checked>
-                <input type="radio" name="sex.id" value="中型" title="微信">
+                <input lay-filter="type" type="radio" name="type" value="1" title="银行卡" checked>
+                <input lay-filter="type" type="radio" name="type" value="2" title="支付宝">
+                <input lay-filter="type" type="radio" name="type" value="3" title="微信">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">账号：</label>
             <div class="layui-input-block">
-                <input type="text" name="code" lay-verify="required|code|number" placeholder="请输入账号" autocomplete="off"
+                <input type="text" name="bank_card_number" lay-verify="required|code|number" placeholder="请输入账号"
+                       autocomplete="off"
                        class="layui-input" style="width: 300px;display: inline-block;">
                 <div class=" layui-word-aux">（根据类型填写对应的账号)）</div>
             </div>
         </div>
+        <div id="none_div">
         <div class="layui-form-item">
             <label class="layui-form-label">银行名称：</label>
             <div class="layui-input-block">
-                <input type="text" name="name" lay-verify="required" placeholder="请输入银行名称" autocomplete="off"
+                <input type="text" name="bank_name" placeholder="请输入银行名称" autocomplete="off"
                        class="layui-input">
                 <div class=" layui-word-aux">（类型是银行时，必填）</div>
             </div>
@@ -59,69 +61,71 @@
         <div class="layui-form-item">
             <label class="layui-form-label">开户支行：</label>
             <div class="layui-input-block">
-                <input type="text" name="id_card" lay-verify="required|idcard" placeholder="请输入开户支行" autocomplete="off"
+                <input type="text" name="bank_branch" placeholder="请输入开户支行"
+                       autocomplete="off"
                        class="layui-input">
                 <div class=" layui-word-aux">（类型是银行时，必填）</div>
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">省：</label>
-            <div class="layui-input-block">
-                <div class="layui-col-md12">
-                    <select name="province" id="J_province">
-                        <option value="0">请选择省份</option>
-                        <option value="1">北京市</option>
-                        <option value="2">天津市</option>
-                        <option value="3">河北省</option>
-                        <option value="4">山西省</option>
-                        <option value="5">内蒙古自治区</option>
-                        <option value="6">辽宁省</option>
-                        <option value="7">吉林省</option>
-                        <option value="8">黑龙江省</option>
-                        <option value="9">上海市</option>
-                        <option value="10">江苏省</option>
-                        <option value="11">浙江省</option>
-                        <option value="12">安徽省</option>
-                        <option value="13">福建省</option>
-                        <option value="14">江西省</option>
-                        <option value="15">山东省</option>
-                        <option value="16">河南省</option>
-                        <option value="17">湖北省</option>
-                        <option value="18">湖南省</option>
-                        <option value="19">广东省</option>
-                        <option value="20">广西壮族自治区</option>
-                        <option value="21">海南省</option>
-                        <option value="22">重庆市</option>
-                        <option value="23">四川省</option>
-                        <option value="24">贵州省</option>
-                        <option value="25">云南省</option>
-                        <option value="26">西藏自治区</option>
-                        <option value="27">陕西省</option>
-                        <option value="28">甘肃省</option>
-                        <option value="29">青海省</option>
-                        <option value="30">宁夏回族自治区</option>
-                        <option value="31">新疆维吾尔自治区</option>
-                        <option value="32">台湾省</option>
-                        <option value="33">香港特别行政区</option>
-                        <option value="34">澳门特别行政区</option>
-                    </select>
-                </div>
-                <div class=" layui-word-aux"> (类型是银行时，必填)</div>
-            </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">市</label>
-            <div class="layui-input-block">
-                <select name="city" lay-verify="required">
-                    <option value=""></option>
-                    <option value="0">北京</option>
-                    <option value="1">上海</option>
-                    <option value="2">广州</option>
-                    <option value="3">深圳</option>
-                    <option value="4">杭州</option>
-                </select>
-            </div>
-        </div>
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">省：</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--<div class="layui-col-md12">-->
+                    <!--<select name="province" id="J_province">-->
+                        <!--<option value="0">请选择省份</option>-->
+                        <!--<option value="1">北京市</option>-->
+                        <!--<option value="2">天津市</option>-->
+                        <!--<option value="3">河北省</option>-->
+                        <!--<option value="4">山西省</option>-->
+                        <!--<option value="5">内蒙古自治区</option>-->
+                        <!--<option value="6">辽宁省</option>-->
+                        <!--<option value="7">吉林省</option>-->
+                        <!--<option value="8">黑龙江省</option>-->
+                        <!--<option value="9">上海市</option>-->
+                        <!--<option value="10">江苏省</option>-->
+                        <!--<option value="11">浙江省</option>-->
+                        <!--<option value="12">安徽省</option>-->
+                        <!--<option value="13">福建省</option>-->
+                        <!--<option value="14">江西省</option>-->
+                        <!--<option value="15">山东省</option>-->
+                        <!--<option value="16">河南省</option>-->
+                        <!--<option value="17">湖北省</option>-->
+                        <!--<option value="18">湖南省</option>-->
+                        <!--<option value="19">广东省</option>-->
+                        <!--<option value="20">广西壮族自治区</option>-->
+                        <!--<option value="21">海南省</option>-->
+                        <!--<option value="22">重庆市</option>-->
+                        <!--<option value="23">四川省</option>-->
+                        <!--<option value="24">贵州省</option>-->
+                        <!--<option value="25">云南省</option>-->
+                        <!--<option value="26">西藏自治区</option>-->
+                        <!--<option value="27">陕西省</option>-->
+                        <!--<option value="28">甘肃省</option>-->
+                        <!--<option value="29">青海省</option>-->
+                        <!--<option value="30">宁夏回族自治区</option>-->
+                        <!--<option value="31">新疆维吾尔自治区</option>-->
+                        <!--<option value="32">台湾省</option>-->
+                        <!--<option value="33">香港特别行政区</option>-->
+                        <!--<option value="34">澳门特别行政区</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+                <!--<div class=" layui-word-aux"> (类型是银行时，必填)</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">市</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--<select name="city" lay-verify="required">-->
+                    <!--<option value=""></option>-->
+                    <!--<option value="0">北京</option>-->
+                    <!--<option value="1">上海</option>-->
+                    <!--<option value="2">广州</option>-->
+                    <!--<option value="3">深圳</option>-->
+                    <!--<option value="4">杭州</option>-->
+                <!--</select>-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="layui-form-item">
             <label class="layui-form-label" style="padding-top: 0">提示:</label>
             <div class="layui-input-block" style="color:rgb(255, 0, 0)"> 请认真核对您的账号，绑定此提现账户后，无法更改。</div>
@@ -139,42 +143,86 @@
             , laydate = layui.laydate
             , form = layui.form
             , table = layui.table;
+        form.render();
 
+        form.on('radio(type)', function(data){
+            if (data.value == 1) {;
+                $('#none_div').show();
+            } else {
+                $('#none_div').hide()
+            }
+        });
+
+        form.on('submit(submit_go)', function (data) {
+            // 提交表单
+            $.ajax({
+                url: layui.api + 'agent/api/my/card/add',
+                type: 'post',
+                headers: {'Authorization': 'Bearer ' + token},
+                data: data.field,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.code == 200) {
+                        layer.msg(data.msg, {
+                            offset: '15px'
+                            , icon: 1
+                            , time: 1000
+                        });
+                        tableData();
+                        layer.closeAll('page'); //关闭信息框
+                    } else {
+                        layer.msg(data.msg, {
+                            offset: '15px'
+                            , icon: 1
+                            , time: 1000
+                        });
+                    }
+                }
+            });
+            // }
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
         laydate.render({
             elem: '#test6'
             , range: true
         });
 
         //执行渲染 （实例 -- 方法渲染)
-        table.render({
-            elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
-            , url: layui.api + 'agent/api/my/card/list'
-            , method: 'get'
-            , headers: {'Authorization': 'Bearer ' + token}
-            , response: {
-                statusName: 'code' //规定数据状态的字段名称，默认：code
-                , statusCode: 200 //规定成功的状态码，默认：0
-                , msgName: 'msg' //规定状态信息的字段名称，默认：msg
-                , countName: 'count' //规定数据总数的字段名称，默认：count
-                , dataName: 'data' //规定数据列表的字段名称，默认：data
-            }
-            , cols: [[
-                {field: 'id', title: '序号'}
-                , {field: 'type', title: '类型', templet: function (d) {
-                        return d.type === 1 ? '银行卡' : (d.type == 2 ? '支付宝' : (d.type == 3 ? '微信' : '' )) ;
-                    }}
-                , {field: 'card_number', title: '账号'}
-                , {field: 'bank_name', title: '银行名'}
-                , {field: 'bank_branch', title: '开户支行'}
-                , {field: 'province', title: '银行所在省'}
-                , {field: 'city', title: '银行所在市'}
-                , {
-                    field: 'status', title: '状态', templet: function (d) {
-                        return d.status === 1 ? '已绑定' : '未绑定';
-                    }
+        function tableData() {
+            table.render({
+                elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
+                , url: layui.api + 'agent/api/my/card/list'
+                , method: 'get'
+                , headers: {'Authorization': 'Bearer ' + token}
+                , response: {
+                    statusName: 'code' //规定数据状态的字段名称，默认：code
+                    , statusCode: 200 //规定成功的状态码，默认：0
+                    , msgName: 'msg' //规定状态信息的字段名称，默认：msg
+                    , countName: 'count' //规定数据总数的字段名称，默认：count
+                    , dataName: 'data' //规定数据列表的字段名称，默认：data
                 }
-            ]], //设置表头
-        });
+                , cols: [[
+                    {field: 'id', title: '序号'}
+                    , {
+                        field: 'type', title: '类型', templet: function (d) {
+                            return d.type === 1 ? '银行卡' : (d.type == 2 ? '支付宝' : (d.type == 3 ? '微信' : ''));
+                        }
+                    }
+                    , {field: 'card_number', title: '账号'}
+                    , {field: 'bank_name', title: '银行名'}
+                    , {field: 'bank_branch', title: '开户支行'}
+                    , {field: 'province', title: '银行所在省'}
+                    , {field: 'city', title: '银行所在市'}
+                    , {
+                        field: 'status', title: '状态', templet: function (d) {
+                            return d.status === 1 ? '已绑定' : '未绑定';
+                        }
+                    }
+                ]], //设置表头
+            });
+        }
+
+        tableData();
         //监听工具条
         table.on('tool(test)', function (obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var data = obj.data; //获得当前行数据
@@ -194,11 +242,6 @@
                     content: $('#layui-form-tixian').html()
                 });
                 form.render()
-                //同步更新缓存对应的值
-                // obj.update({
-                //   username: '123'
-                //   ,title: 'xxx'
-                // });
             }
         });
         // 我要提现
@@ -211,10 +254,5 @@
             });
             form.render()
         })
-        //监听提交事件
-        form.on('submit(submit_go)', function (data) {
-            layer.msg(JSON.stringify(data.field));
-            return false; // 阻止表单跳转
-        });
     });
 </script>
