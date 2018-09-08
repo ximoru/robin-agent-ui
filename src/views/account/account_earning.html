@@ -138,7 +138,7 @@
                     {field: 'id', title: '序号'}
                     , {field: 'id', title: '订单编号'}
                     , {
-                        field: 'agent_parent', title: '收益人', templet: function (d) {
+                        field: 'nickname', title: '收益人', templet: function (d) {
                             return d.agent_parent.nickname;
                         }
                     }
@@ -152,7 +152,7 @@
                     , {field: 'created_at', title: '收益时间'}
                     , {
                         field: 'agent_child', title: '贡献人', templet: function (d) {
-                            return d.agent_child.nickname;
+                            // return d.agent_child.nickname;
                         }
                     }
                     // ,{field: 'note', title: '备注'}
