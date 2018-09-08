@@ -40,6 +40,10 @@
         </form>
         <div class="layui-card-body">
             <table id="demo" lay-filter="test"></table>
+
+            <script type="text/html" id="backTickets">
+                <button class="layui-btn layui-btn-xs" lay-event="down_level" id="down_level">回收激活码</button>
+            </script>
         </div>
     </div>
 </div>
@@ -83,9 +87,6 @@
             </div>
         </div>
     </div>
-</script>
-<script type="text/html" id="backTickets">
-    <button class="layui-btn layui-btn-xs" >回收激活码</button>
 </script>
 <script>
     layui.use(['laydate', 'form', 'table'], function () {
@@ -250,9 +251,42 @@
 
             form.render();
         });
-        $('#backTickets').click(function (){
-            console.log(21)
-        })
+        table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+            var layEvent = obj.event; //获得 lay-event 对应的值
+            if(layEvent === 'down_level'){ //删除
+                layer.confirm(
+                    '是否降级', {
+                        btn: ['是', '否'] //可以无限个按钮
+                    }, function (index, layero) {
+                        $.ajax({
+                            url: layui.api + 'agent/api/wealth/down',
+                            type: 'post',
+                            headers: {'Authorization': 'Bearer ' + token},
+                            data: {'user_id': obj.data.user_id},
+                            success: function (data) {
+                                if (data.code == 200) {
+                                    layer.msg(data.msg, {
+                                        offset: '15px'
+                                        , icon: 1
+                                        , time: 1000
+                                    });
+                                    layer.closeAll('page'); //关闭信息框
+                                    form.render();
+                                } else {
+                                    layer.msg(data.msg, {
+                                        offset: '15px'
+                                        , icon: 1
+                                        , time: 1000
+                                    });
+                                }
+                            },
+                            error: function (error) {
+                                console.log(error);
+                            }
+                        });
+                    });
+            }
+        });
     });
 </script>
 <style>
