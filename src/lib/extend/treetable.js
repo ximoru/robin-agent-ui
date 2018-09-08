@@ -14,8 +14,28 @@ layui.define(['layer', 'table'], function (exports) {
             if (param.data) {
                 treetable.init(param, param.data);
             } else {
-                $.getJSON(param.url, param.where, function (res) {
-                    treetable.init(param, res.data);
+                $.ajax({
+                    url: param.url,
+                    type: param.method,
+                    headers: param.headers,
+                    data: param.where,
+                    success: function (data) {
+                        if (data.code == 200) {
+                            layer.msg(data.msg, {
+                                offset: '15px'
+                                , icon: 1
+                                , time: 1000
+                            });
+
+                            treetable.init(param, data.data);
+                        } else {
+                            layer.msg(data.msg, {
+                                offset: '15px'
+                                , icon: 1
+                                , time: 1000
+                            });
+                        }
+                    }
                 });
             }
         },
@@ -48,11 +68,11 @@ layui.define(['layer', 'table'], function (exports) {
                 for (var i = 0; i < data.length; i++) {
                     if (data[i].pid == s_pid) {
                         var len = mData.length;
-                        if (len > 0 && mData[len - 1].id == s_pid) {
+                        if (len > 0 && mData[len - 1].agent_id == s_pid) {
                             mData[len - 1].isParent = true;
                         }
                         mData.push(data[i]);
-                        sort(data[i].id, data);
+                        sort(data[i].agent_id, data);
                     }
                 }
             };
