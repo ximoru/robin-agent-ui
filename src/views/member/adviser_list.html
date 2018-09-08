@@ -19,7 +19,7 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">注册时间：</label>
                     <div class="layui-input-inline">
-                        <input type="text" class="layui-input" id="test6" placeholder=" - ">
+                        <input type="text" class="layui-input" id="time" placeholder=" - ">
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <button class="layui-btn" id="btn-search">搜索</button>
+                    <button class="layui-btn" id="btn-search" lay-submit lay-filter="submit_go">搜索</button>
                     <button class="layui-btn">重置</button>
                 </div>
             </div>
@@ -43,34 +43,62 @@
 
 <script>
     layui.use(['laydate', 'form', 'table'], function () {
-        var $ = layui.jquery;
-        var laydate = layui.laydate;
-        var form = layui.form;
-        var table = layui.table;
+        var $ = layui.jquery
+            ,laydate = layui.laydate
+            ,form = layui.form
+            ,table = layui.table
+            , searchData = [];
 
         form.render();
+        form.on('submit(submit_go)', function (data) {
+            searchData = data.field;
+
+            if (!searchData.time == "") {
+                searchData.time = searchData.time.split(' - ');
+            }
+            tableData();
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
         laydate.render({
-            elem: '#test6'
+            elem: '#time'
             , range: true
         });
 
         //执行渲染
+        function tableData() {
+            table.render({
+                elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
+                , url: layui.api + 'agent/api/advisor/list'
+                , method: 'get'
+                , headers: {'Authorization': 'Bearer ' + token}
+                , page: true // 开启分页
+                , where: searchData
+                , response: {
+                    statusName: 'code' //规定数据状态的字段名称，默认：code
+                    , statusCode: 200 //规定成功的状态码，默认：0
+                    , msgName: 'msg' //规定状态信息的字段名称，默认：msg
+                    , countName: 'count' //规定数据总数的字段名称，默认：count
+                    , dataName: 'data' +
+                    '' //规定数据列表的字段名称，默认：data
+                }
+                , cols: [[
+                    {field: 'id', title: '序号'}
+                    ,{field: 'relation_type', title: '顾问类型'}
+                    ,{field: 'phone', title: '手机号'}
+                    ,{field: 'nickname', title: '姓名'}
+                    ,{field: 'total_balance', title: '码钱'}
+                    ,{field: 'total_commission', title: '佣金'}
+                    ,{field: 'used_tickets', title: '激活会员'}
+                    ,{field: 'remaining_tickets', title: '剩余激活码数'}
+                    ,{field: 'binding', title: '绑定会员'}
+                    ,{field: 'created_at', title: '注册时间'}
+                    // ,{field: 'status', title: '是否激活', templet: function (d) {
+                    //         return d.status == 1 ? '激活' : '未激活';
+                    //     }}
+                ]], //设置表头
+            });
+        }
 
-        table.render({
-            elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
-            ,url: 'json/member/adviser_list.json'
-            ,cols: [[
-                {field: 'id', title: '序号'}
-                ,{field: 'type', title: '顾问类型'}
-                ,{field: 'phone', title: '手机号'}
-                ,{field: 'name', title: '姓名'}
-                ,{field: 'code_money', title: '码钱'}
-                ,{field: 'commission', title: '佣金'}
-                ,{field: 'status', title: '激活会员'}
-                ,{field: 'remaining', title: '剩余激活码数'}
-                ,{field: 'binding', title: '绑定会员'}
-                ,{field: 'created_at', title: '注册时间'}
-            ]], //设置表头
-        });
+        tableData();
     });
 </script>
