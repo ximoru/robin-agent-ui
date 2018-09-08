@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="{{ layui.setter.base }}style/treetable.css?v={{ layui.admin.v }}-1" media="all">
 </script>
 
-<title><顾问排行榜></顾问排行榜></title>
+<title>顾问排行榜</title>
 
 <div class="layui-card layadmin-header">
     <div class="layui-breadcrumb" lay-filter="breadcrumb">
@@ -19,14 +19,14 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">注册时间：</label>
                     <div class="layui-input-inline">
-                        <input type="text" class="layui-input" id="time" placeholder=" - ">
+                        <input type="text" class="layui-input" name="time" id="time" placeholder=" - ">
                     </div>
                 </div>
 
                 <div class="layui-inline">
                     <label class="layui-form-label">姓名：</label>
                     <div class="layui-input-block">
-                        <input type="text" name="username" placeholder="请输入关键字" autocomplete="off" class="layui-input">
+                        <input type="text" name="name" placeholder="请输入关键字" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
@@ -85,7 +85,7 @@
                     {field: 'id', title: '序号'}
                     ,{field: 'relation_type', title: '顾问类型'}
                     ,{field: 'phone', title: '手机号'}
-                    ,{field: 'nickname', title: '姓名'}
+                    ,{field: 'realname', title: '姓名'}
                     ,{field: 'total_balance', title: '码钱'}
                     ,{field: 'total_commission', title: '佣金'}
                     ,{field: 'used_tickets', title: '激活会员'}
