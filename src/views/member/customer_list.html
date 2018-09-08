@@ -64,7 +64,6 @@
         form.render();
         form.on('submit(*)', function (data) {
             searchData = data.field;
-            console.log(searchData);
             if (!searchData.time == "") {
                 searchData.time = searchData.time.split(' - ');
             }
@@ -122,7 +121,6 @@
                     '是否升级', {
                         btn: ['是', '否'] //可以无限个按钮
                     }, function (index, layero) {
-                        console.log('是');
                         $.ajax({
                             url: layui.api + 'agent/api/customer/lift',
                             type: 'post',
@@ -146,7 +144,6 @@
                                 }
                             },
                             error: function (error) {
-                                console.log(2);
                                 console.log(error);
                             }
                         });
