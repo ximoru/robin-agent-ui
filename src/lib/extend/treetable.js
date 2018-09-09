@@ -21,12 +21,6 @@ layui.define(['layer', 'table'], function (exports) {
                     data: param.where,
                     success: function (data) {
                         if (data.code == 200) {
-                            layer.msg(data.msg, {
-                                offset: '15px'
-                                , icon: 1
-                                , time: 1000
-                            });
-
                             treetable.init(param, data.data);
                         } else {
                             layer.msg(data.msg, {

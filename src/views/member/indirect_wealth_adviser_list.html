@@ -51,7 +51,7 @@
 
         form.render();
         form.on('submit(*)', function (data) {
-            searchData = data.field;//输入的值      
+            searchData = data.field;//输入的值
             if (!searchData.time == "") {
                 searchData.time = searchData.time.split(' - ');
             }
@@ -86,16 +86,19 @@
                 ,cols: [[
                     {field: 'type', title: '序号'}
                     ,{field: 'phone', title: '手机号'}
-                    ,{field: 'nickname', title: '姓名'}
-                    ,{field: 'nickname', title: '码钱总收益',templet:function(d){
+                    ,{field: 'nickname', title: '昵称'}
+                    ,{field: 'realname', title: '姓名'}
+                    ,{field: 'total_balance', title: '码钱总收益', templet:function(d){
                         return d.wallet.total_balance;
                     }}
-                    ,{field: 'total_commission', title: '佣金总收益' ,templet:function(d){
+                    ,{field: 'total_commission', title: '佣金总收益', templet:function(d){
                         return d.wallet.total_commission
                     }}
-                    ,{field: 'activation', title: '激活会员'}
-                    ,{field: 'remaining_tickets', title: '剩余码数',templet:function(d){
-                        return d.wallet.total_commission
+                    ,{field: 'activation', title: '激活会员', templet:function(d){
+                            return d.wallet.used_tickets
+                        }}
+                    ,{field: 'remaining_tickets', title: '剩余码数', templet:function(d){
+                        return d.wallet.remaining_tickets
                         }
                     }
                     ,{field: 'created_at', title: '注册时间'}
