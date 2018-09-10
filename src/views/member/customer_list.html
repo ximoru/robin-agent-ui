@@ -78,8 +78,7 @@
             table.render({
                 elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
                 , url: layui.setter.api_base_url + 'agent/api/customer/list'
-                , method: 'get'
-
+                , method: 'GET'
                 , page: true // 开启分页
                 , where: searchData
                 , response: {
