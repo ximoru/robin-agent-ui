@@ -77,7 +77,7 @@ layui.define(['laytpl', 'layer'], function(exports){
       //自动给 Request Headers 传入 token
       options.headers[request.tokenName] = request.tokenName in options.headers 
         ?  options.headers[request.tokenName]
-      : (layui.data(setter.tableName)[request.tokenName] || '');
+      : ('Bearer ' + layui.data(setter.tableName)[request.tokenName] || '');
     }
     
     delete options.success;

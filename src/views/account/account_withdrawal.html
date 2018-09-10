@@ -129,7 +129,7 @@
             $.ajax({
                 url: layui.api + 'agent/api/my/card/add',
                 type: 'post',
-                headers: {'Authorization': 'Bearer ' + token},
+                
                 data: data.field,
                 dataType: 'json',
                 success: function (data) {
@@ -183,7 +183,7 @@
                 $.ajax({
                     url: layui.api + 'agent/api/my/withdrawal',
                     type: 'post',
-                    headers: {'Authorization': 'Bearer ' + token},
+                    
                     data: data,
                     dataType: 'json',
                     success: function (data) {
@@ -209,12 +209,12 @@
         });
 
         // 信息显示
-        var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
+        
 
         $.ajax({
             url: layui.api + 'agent/api/user/info',
             type: 'get',
-            headers: {'Authorization': 'Bearer ' + token},
+            
             dataType: 'json',
             success: function (data) {
                 if (data.code == 200) {

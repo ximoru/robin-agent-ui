@@ -72,12 +72,12 @@
 <script>
 layui.use('set', layui.factory('set'));
 
-var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
+
 var $ = layui.$;
 $.ajax({
     url: layui.api + 'agent/api/user/info',
     type: 'get',
-    headers: {'Authorization': 'Bearer ' + token},
+    
     dataType: 'json',
     success: function (data) {
         var requset_data = data.data;

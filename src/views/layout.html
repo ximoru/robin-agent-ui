@@ -58,15 +58,17 @@
                 </a>
             </li>
             <li class="layui-nav-item" lay-unselect>
-                <a href="javascript:;">
-                    <cite id="agant_name"></cite>
-                </a>
-                <dl class="layui-nav-child">
-                    <dd><a lay-href="set/user/info">基本资料</a></dd>
-                    <dd><a lay-href="set/user/password">修改密码</a></dd>
-                    <hr>
-                    <dd layadmin-event="logout" style="text-align: center;"><a>退出</a></dd>
-                </dl>
+                <script type="text/html" template lay-url="{{ layui.setter.api_base_url }}/agent/api/user/info">
+                    <a href="javascript:;">
+                        <cite id="agant_name">{{ d.data.nickname }}</cite>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a lay-href="set/user/info">基本资料</a></dd>
+                        <dd><a lay-href="set/user/password">修改密码</a></dd>
+                        <hr>
+                        <dd layadmin-event="logout" style="text-align: center;"><a>退出</a></dd>
+                    </dl>
+                </script>
             </li>
 
             <li class="layui-nav-item layui-hide-xs" lay-unselect>
@@ -202,29 +204,3 @@
     <div class="layadmin-body-shade" layadmin-event="shade"></div>
 
 </div>
-
-<script>
-    var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
-    var $ = layui.$
-        , admin = layui.admin;
-    $.ajax({
-        url: layui.api + 'agent/api/user/info',
-        type: 'get',
-        headers: {'Authorization': 'Bearer ' + token},
-        dataType: 'json',
-        success: function (data) {
-            if (data.code == 401) {
-                layer.msg(data.msg, {
-                    offset: '15px'
-                    , icon: 1
-                    , time: 1000
-                }, function () {
-                    admin.events.logout();
-                });
-            } else {
-                var requset_data = data.data;
-                $('#agant_name').html(requset_data.nickname);
-            }
-        }
-    });
-</script>

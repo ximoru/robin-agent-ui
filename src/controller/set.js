@@ -91,7 +91,7 @@ layui.define(['form', 'upload'], function (exports) {
         admin.req({
             url: layui.api + 'agent/api/user/edit'
             , type: 'post'
-            , headers: {'Authorization': 'Bearer ' + token}
+            
             , data: obj.field
             , success: function (res) {
                 if (res.code == 200) {
@@ -148,7 +148,7 @@ layui.define(['form', 'upload'], function (exports) {
         admin.req({
             url: layui.api + 'agent/api/user/password'
             , type: 'post'
-            , headers: {'Authorization': 'Bearer ' + token}
+            
             , data: obj.field
             , success: function (res) {
                 if (res.code == 200) {

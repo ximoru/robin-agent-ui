@@ -64,7 +64,7 @@
         });
 
         //执行渲染
-        var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
+        
 
         function tableData(){
             console.log(123)
@@ -72,7 +72,7 @@
                 elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
                 , url: layui.api + 'agent/api/indirect/wealth/list'
                 , method: 'get'
-                , headers: {'Authorization': 'Bearer ' + token}
+                
                 , dataType: "json"
                 , page: true // 开启分页
                 , where: searchData

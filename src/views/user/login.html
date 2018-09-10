@@ -70,7 +70,7 @@
                 canForm = true;
             },
             error: function () {
-                layer.msg('动验证验证失败', {
+                layer.msg('滑动验证失败', {
                     offset: '15px'
                     , icon: 2
                     , time: 1000
@@ -93,7 +93,7 @@
             if (canForm) {
                 //请求登入接口
                 admin.req({
-                    url: layui.api + 'agent/api/oauth/token' //实际使用请改成服务端真实接口
+                    url: setter.api_base_url + 'agent/api/oauth/token' //实际使用请改成服务端真实接口
                     , type: 'POST'
                     , data: obj.field
                     , done: function (res) {

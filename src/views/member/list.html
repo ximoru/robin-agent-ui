@@ -57,7 +57,7 @@
         });
         // 渲染表格
         layer.load(2);
-        var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
+        
 
         function tableData() {
             treetable.render({
@@ -68,7 +68,7 @@
                 elem: '#auth-table',
                 url: layui.api + 'agent/api/agent/list',
                 where: searchData,
-                headers: {'Authorization': 'Bearer ' + token},
+                
                 method: 'get',
                 page: false,
                 cols: [[

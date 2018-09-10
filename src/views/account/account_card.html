@@ -158,7 +158,7 @@
             $.ajax({
                 url: layui.api + 'agent/api/my/card/add',
                 type: 'post',
-                headers: {'Authorization': 'Bearer ' + token},
+                
                 data: data.field,
                 dataType: 'json',
                 success: function (data) {
@@ -193,7 +193,7 @@
                 elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
                 , url: layui.api + 'agent/api/my/card/list'
                 , method: 'get'
-                , headers: {'Authorization': 'Bearer ' + token}
+                
                 , response: {
                     statusName: 'code' //规定数据状态的字段名称，默认：code
                     , statusCode: 200 //规定成功的状态码，默认：0

@@ -152,13 +152,13 @@ layui.define(function (exports) {
             window.onresize = echartsApp[index].resize;
         };
 
-        var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
+        
 
         // 获取系统信息
         $.ajax({
             url: layui.api + 'agent/api/home/figure',
             type: 'get',
-            headers: {'Authorization': 'Bearer ' + token},
+            
             dataType: 'json',
             success: function (data) {
                 options = [

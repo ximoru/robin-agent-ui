@@ -109,7 +109,7 @@
         });
         // 短信请求
         form.on('submit(code)', function(data) {
-            var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
+            
             $.ajax({
                 url: layui.api + 'api/public/captcha',
                 type: 'POST',
@@ -158,7 +158,7 @@
                     , time: 1000
                 });
             } else {
-                var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
+                
                 $.ajax({
                     url: layui.api + 'agent/api/wealth/add',
                     type: 'POST',
@@ -211,7 +211,7 @@
                 elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
                 ,url: layui.api + 'agent/api/wealth/list'
                 , method: 'get'
-                , headers: {'Authorization': 'Bearer ' + token}
+                
                 , dataType: "json"
                 , page: true // 开启分页
                 , where: searchData
@@ -262,7 +262,7 @@
                         $.ajax({
                             url: layui.api + 'agent/api/wealth/down',
                             type: 'post',
-                            headers: {'Authorization': 'Bearer ' + token},
+                            
                             data: {'user_id': obj.data.user_id},
                             success: function (data) {
                                 if (data.code == 200) {

@@ -159,7 +159,7 @@
 
     */
     layui.use('console', layui.factory('console'));
-    var token = JSON.parse(localStorage.getItem('layuiAdmin'))['access_token'];
+    
     var $ = layui.$;
 
 
@@ -167,7 +167,7 @@
     $.ajax({
         url: layui.api + 'agent/api/home/info',
         type: 'get',
-        headers: {'Authorization': 'Bearer ' + token},
+        
         dataType: 'json',
         success: function (data) {
             var requset_data = data.data;
@@ -181,7 +181,7 @@
     $.ajax({
         url: layui.api + 'agent/api/home/statistics',
         type: 'get',
-        headers: {'Authorization': 'Bearer ' + token},
+        
         dataType: 'json',
         success: function (data) {
             var requset_data = data.data;

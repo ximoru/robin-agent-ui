@@ -17,17 +17,19 @@ layui.define(['laytpl', 'layer', 'element', 'util'], function(exports){
     ,pageTabs: false //是否开启页面选项卡功能。单页版不推荐开启
 
     ,name: 'Robin Fin'
-    ,tableName: 'layuiAdmin' //本地存储表名
+    ,tableName: 'robinFin' //本地存储表名
     ,MOD_NAME: 'admin' //模块事件名
 
-    ,debug: true //是否开启调试模式。如开启，接口上异常时会抛出异常 URL 等信息
+    ,debug: false //是否开启调试模式。如开启，接口上异常时会抛出异常 URL 等信息
 
     ,interceptor: true //是否开启未登入拦截
 
     //自定义请求字段
     ,request: {
-      tokenName: 'access_token' //自动携带 token 的字段名。可设置 false 不携带。
+      tokenName: 'Authorization' //自动携带 token 的字段名。可设置 false 不携带。
     }
+
+    ,api_base_url: 'http://api.robin.laralab.org/' // 测试地址
 
     //自定义响应字段
     ,response: {
@@ -121,5 +123,3 @@ layui.define(['laytpl', 'layer', 'element', 'util'], function(exports){
     }
   });
 });
-
-layui.api = 'http://api.robin.laralab.org/'; // 测试地址
