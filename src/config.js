@@ -52,7 +52,8 @@ layui.define(['laytpl', 'layer', 'element', 'util'], function(exports){
     ,extend: [
       'echarts', //echarts 核心包
       'echartsTheme', //echarts 主题
-      'treetable' // 树形显示
+      'treetable', // 树形显示
+      'verify' // 验证码
     ]
 
     //主题配置
