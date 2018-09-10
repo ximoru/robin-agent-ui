@@ -82,12 +82,12 @@
     </div>
 </div>
 <script>
-    
+
     var $ = layui.$;
     $.ajax({
-        url: layui.api + 'agent/api/my/account',
+        url: layui.setter.api_base_url + 'agent/api/my/account',
         type: 'get',
-        
+
         dataType: 'json',
         success: function (data) {
             var requset_data = data.data;

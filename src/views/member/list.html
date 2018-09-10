@@ -57,7 +57,7 @@
         });
         // 渲染表格
         layer.load(2);
-        
+
 
         function tableData() {
             treetable.render({
@@ -66,10 +66,9 @@
                 treeIdName: 'agent_id',
                 treePidName: 'parent_id',
                 elem: '#auth-table',
-                url: layui.api + 'agent/api/agent/list',
+                url: layui.setter.api_base_url + 'agent/api/agent/list',
                 where: searchData,
-                
-                method: 'get',
+                method: 'GET',
                 page: false,
                 cols: [[
                     {type: 'numbers'},

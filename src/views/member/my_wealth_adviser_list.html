@@ -109,9 +109,9 @@
         });
         // 短信请求
         form.on('submit(code)', function(data) {
-            
+
             $.ajax({
-                url: layui.api + 'api/public/captcha',
+                url: layui.setter.api_base_url + 'api/public/captcha',
                 type: 'POST',
                 data: data.field,
                 headers: {
@@ -158,9 +158,9 @@
                     , time: 1000
                 });
             } else {
-                
+
                 $.ajax({
-                    url: layui.api + 'agent/api/wealth/add',
+                    url: layui.setter.api_base_url + 'agent/api/wealth/add',
                     type: 'POST',
                     data: data.field,
                     headers: {
@@ -209,9 +209,9 @@
         function tableData(){
             table.render({
                 elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
-                ,url: layui.api + 'agent/api/wealth/list'
+                ,url: layui.setter.api_base_url + 'agent/api/wealth/list'
                 , method: 'get'
-                
+
                 , dataType: "json"
                 , page: true // 开启分页
                 , where: searchData
@@ -260,9 +260,9 @@
                         btn: ['是', '否'] //可以无限个按钮
                     }, function (index, layero) {
                         $.ajax({
-                            url: layui.api + 'agent/api/wealth/down',
+                            url: layui.setter.api_base_url + 'agent/api/wealth/down',
                             type: 'post',
-                            
+
                             data: {'user_id': obj.data.user_id},
                             success: function (data) {
                                 if (data.code == 200) {

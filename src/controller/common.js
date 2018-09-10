@@ -21,12 +21,12 @@ layui.define(function (exports) {
 
     //退出
     admin.events.logout = function () {
-        
+
         //执行退出接口
         admin.req({
-            url: layui.api + 'agent/api/logout'
+            url: layui.setter.api_base_url + 'agent/api/logout'
             , type: 'post'
-            
+
             , data: {}
             // , done: function (res) { //这里要说明一下：done 是只有 response 的 code 正常才会执行。而 succese 则是只要 http 为 200 就会执行
             //

@@ -72,14 +72,14 @@
             , range: true
         });
         //执行渲染 （实例 -- 方法渲染）
-        
+
 
         function tableData() {
             table.render({
                 elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
-                , url: layui.api + 'agent/api/customer/list'
+                , url: layui.setter.api_base_url + 'agent/api/customer/list'
                 , method: 'get'
-                
+
                 , page: true // 开启分页
                 , where: searchData
                 , response: {
@@ -127,9 +127,9 @@
                         btn: ['是', '否'] //可以无限个按钮
                     }, function (index, layero) {
                         $.ajax({
-                            url: layui.api + 'agent/api/customer/lift',
+                            url: layui.setter.api_base_url + 'agent/api/customer/lift',
                             type: 'post',
-                            
+
                             data: {'user_id': obj.data.user_id},
                             success: function (data) {
                                 if (data.code == 200) {

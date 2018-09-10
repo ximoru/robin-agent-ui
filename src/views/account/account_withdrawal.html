@@ -127,9 +127,9 @@
         form.on('submit(submit_go_card)', function (data) {
             // 提交表单
             $.ajax({
-                url: layui.api + 'agent/api/my/card/add',
+                url: layui.setter.api_base_url + 'agent/api/my/card/add',
                 type: 'post',
-                
+
                 data: data.field,
                 dataType: 'json',
                 success: function (data) {
@@ -181,9 +181,9 @@
                     'desc': data.field.desc,
                 };
                 $.ajax({
-                    url: layui.api + 'agent/api/my/withdrawal',
+                    url: layui.setter.api_base_url + 'agent/api/my/withdrawal',
                     type: 'post',
-                    
+
                     data: data,
                     dataType: 'json',
                     success: function (data) {
@@ -209,12 +209,12 @@
         });
 
         // 信息显示
-        
+
 
         $.ajax({
-            url: layui.api + 'agent/api/user/info',
+            url: layui.setter.api_base_url + 'agent/api/user/info',
             type: 'get',
-            
+
             dataType: 'json',
             success: function (data) {
                 if (data.code == 200) {

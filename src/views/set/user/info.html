@@ -75,9 +75,9 @@ layui.use('set', layui.factory('set'));
 
 var $ = layui.$;
 $.ajax({
-    url: layui.api + 'agent/api/user/info',
+    url: layui.setter.api_base_url + 'agent/api/user/info',
     type: 'get',
-    
+
     dataType: 'json',
     success: function (data) {
         var requset_data = data.data;

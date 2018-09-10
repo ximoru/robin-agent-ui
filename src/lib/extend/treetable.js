@@ -2,6 +2,7 @@ layui.define(['layer', 'table'], function (exports) {
     var $ = layui.jquery;
     var layer = layui.layer;
     var table = layui.table;
+    var admin = layui.admin;
 
     var treetable = {
         // 渲染树形表格
@@ -14,10 +15,9 @@ layui.define(['layer', 'table'], function (exports) {
             if (param.data) {
                 treetable.init(param, param.data);
             } else {
-                $.ajax({
+                admin.req({
                     url: param.url,
                     type: param.method,
-                    headers: param.headers,
                     data: param.where,
                     success: function (data) {
                         if (data.code == 200) {

@@ -156,9 +156,9 @@
         form.on('submit(submit_go)', function (data) {
             // 提交表单
             $.ajax({
-                url: layui.api + 'agent/api/my/card/add',
+                url: layui.setter.api_base_url + 'agent/api/my/card/add',
                 type: 'post',
-                
+
                 data: data.field,
                 dataType: 'json',
                 success: function (data) {
@@ -191,9 +191,9 @@
         function tableData() {
             table.render({
                 elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
-                , url: layui.api + 'agent/api/my/card/list'
+                , url: layui.setter.api_base_url + 'agent/api/my/card/list'
                 , method: 'get'
-                
+
                 , response: {
                     statusName: 'code' //规定数据状态的字段名称，默认：code
                     , statusCode: 200 //规定成功的状态码，默认：0
