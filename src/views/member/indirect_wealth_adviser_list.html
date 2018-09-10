@@ -64,15 +64,13 @@
         });
 
         //执行渲染
-        
+
 
         function tableData(){
-            console.log(123)
             table.render({
                 elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
-                , url: layui.api + 'agent/api/indirect/wealth/list'
+                , url: layui.setter.api_base_url + 'agent/api/indirect/wealth/list'
                 , method: 'get'
-                
                 , dataType: "json"
                 , page: true // 开启分页
                 , where: searchData

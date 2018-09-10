@@ -11,101 +11,104 @@
     </div>
 </div>
 <div class="layui-fluid layui-account">
-    <div class="layui-row layui-col-space15">
-        <div class="layui-col-md5">
-            <div class="layui-card">
-                <div class="layui-card-body">
-                    <div class="acount_img"><img src="" alt="" id="portrait"></div>
-                    <div class="name" id="nickname"></div>
-                    <ul class="site-doc-color">
-                        <li style="background-color: #5FB878;">
-                            <p>总收益</p>
-                            <p id="total_balance">0</p>
-                        </li>
-                        <li style="background-color: #5FB878;">
-                            <p>可收益</p>
-                            <p id="balance">0</p>
-                        </li>
-                    </ul>
+
+    <script type="text/html" template lay-url="{{ layui.setter.api_base_url }}agent/api/my/account">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md5">
+                <div class="layui-card">
+                    <div class="layui-card-body">
+                        <div class="acount_img"><img
+                                src="{{ d.data.portrait == null  ? 'http://bpic.588ku.com/element_origin_min_pic/01/48/88/2757444507812f6.jpg' : d.data.portrait }}"
+                                alt=""></div>
+                        <div class="name" id="nickname"></div>
+                        <ul class="site-doc-color">
+                            <li style="background-color: #5FB878;">
+                                <p>总收益</p>
+                                <p>
+                                    {{ d.data.total_balance }}
+                                </p>
+                            </li>
+                            <li style="background-color: #5FB878;">
+                                <p>可收益</p>
+                                <p>
+                                    {{ d.data.balance }}
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md7">
+                <div class="layui-card">
+                    <div class="layui-card-header" style="text-align: left">账户信息</div>
+                    <div class="layui-card-body layui-text">
+                        <table class="layui-table" style="text-align: left">
+                            <tbody>
+
+                            <tr>
+                                <td>账户状态</td>
+                                <td>
+                                    {{ d.data.status == 1 ? '正常' : '未激活' }}
+                                </td>
+                                <td>登录账户</td>
+                                <td>
+                                    {{ d.data.phone }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>代理区域</td>
+                                <td>
+                                    {{ d.data.area }}
+                                </td>
+                                <td>我的推荐码</td>
+                                <td>
+                                    {{ d.data.promote_code }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>真实姓名</td>
+                                <td>
+                                    {{ d.data.realname }}
+                                </td>
+                                <td>身份证号</td>
+                                <td>
+                                    {{ d.data.identification }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>注册时间</td>
+                                <td>
+                                    {{ d.data.created_at }}
+                                </td>
+                                <td>剩余激活码</td>
+                                <td>
+                                    {{ d.data.remaining_tickets }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>邀请用户数</td>
+                                <td id="users">
+                                    {{ d.data.users }}
+                                </td>
+                                <td>激活用户数</td>
+                                <td>
+                                    {{ d.data.activationUsers }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>代理等级</td>
+                                <td>
+                                    {{ d.data.position }}
+                                </td>
+                                <!--<td>代理等级</td>-->
+                                <!--<td>88888888 / 66666666</td>-->
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="layui-col-md7">
-            <div class="layui-card">
-                <div class="layui-card-header" style="text-align: left">账户信息</div>
-                <div class="layui-card-body layui-text">
-                    <table class="layui-table" style="text-align: left">
-                        <tbody>
-                        <tr>
-                            <td>账户状态</td>
-                            <td id="status">
-                            </td>
-                            <td>登录账户</td>
-                            <td id="phone">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>代理区域</td>
-                            <td id="area"></td>
-                            <td>我的推荐码</td>
-                            <td id="promote_code"></td>
-                        </tr>
-                        <tr>
-                            <td>真实姓名</td>
-                            <td id="realname"></td>
-                            <td>身份证号</td>
-                            <td id="identification"></td>
-                        </tr>
-                        <tr>
-                            <td>注册时间</td>
-                            <td id="created_at"></td>
-                            <td>剩余激活码</td>
-                            <td id="remaining_tickets"></td>
-                        </tr>
-                        <tr>
-                            <td>邀请用户数</td>
-                            <td id="users"></td>
-                            <td>激活用户数</td>
-                            <td id="activationUsers"></td>
-                        </tr>
-                        <tr>
-                            <td>代理等级</td>
-                            <td id="position"></td>
-                            <!--<td>代理等级</td>-->
-                            <!--<td>88888888 / 66666666</td>-->
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    </script>
 </div>
-<script>
-    
-    var $ = layui.$;
-    $.ajax({
-        url: layui.api + 'agent/api/my/account',
-        type: 'get',
-        
-        dataType: 'json',
-        success: function (data) {
-            var requset_data = data.data;
-            $('#portrait').attr('src', requset_data.portrait == null ? 'http://bpic.588ku.com/element_origin_min_pic/01/48/88/2757444507812f6.jpg' : requset_data.portrait);
-            $('#nickname').html(requset_data.nickname);
-            $('#total_balance').html(requset_data.total_balance);
-            $('#balance').html(requset_data.balance);
-            $('#status').html(requset_data.status == 1 ? '正常' : '未激活');
-            $('#phone').html(requset_data.phone);
-            $('#area').html(requset_data.area);
-            $('#promote_code').html(requset_data.promote_code);
-            $('#realname').html(requset_data.realname);
-            $('#identification').html(requset_data.identification);
-            $('#created_at').html(requset_data.created_at);
-            $('#remaining_tickets').html(requset_data.remaining_tickets);
-            $('#users').html(requset_data.users);
-            $('#activationUsers').html(requset_data.activationUsers);
-            $('#position').html(requset_data.position);
-        }
-    });
-</script>

@@ -89,9 +89,8 @@ layui.define(['form', 'upload'], function (exports) {
     form.on('submit(setmyinfo)', function (obj) {
         //提交修改
         admin.req({
-            url: layui.api + 'agent/api/user/edit'
+            url: layui.setter.api_base_url + 'agent/api/user/edit'
             , type: 'post'
-            
             , data: obj.field
             , success: function (res) {
                 if (res.code == 200) {
@@ -113,7 +112,7 @@ layui.define(['form', 'upload'], function (exports) {
     var portrait_src = $('#portrait_src');
     var portrait_img = $('#portrait_img');
     upload.render({
-        url: layui.api + 'api/public/upload'
+        url: layui.setter.api_base_url + 'api/public/upload'
         , elem: '#portrait_upload'
         , done: function (res) {
             if (res.code == 200) {
@@ -146,9 +145,9 @@ layui.define(['form', 'upload'], function (exports) {
     form.on('submit(setmypass)', function (obj) {
         //提交修改
         admin.req({
-            url: layui.api + 'agent/api/user/password'
+            url: layui.setter.api_base_url + 'agent/api/user/password'
             , type: 'post'
-            
+
             , data: obj.field
             , success: function (res) {
                 if (res.code == 200) {

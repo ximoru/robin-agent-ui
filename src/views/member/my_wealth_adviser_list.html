@@ -89,11 +89,12 @@
     </div>
 </script>
 <script>
-    layui.use(['laydate', 'form', 'table'], function () {
+    layui.use(['laydate', 'form', 'table', 'admin'], function () {
         var $ = layui.jquery;
         var laydate = layui.laydate;
         var form = layui.form;
         var table = layui.table;
+        var admin = layui.admin;
         var searchData = [];
 
         form.render();
@@ -109,15 +110,12 @@
         });
         // 短信请求
         form.on('submit(code)', function(data) {
-            
-            $.ajax({
-                url: layui.api + 'api/public/captcha',
-                type: 'POST',
-                data: data.field,
-                headers: {
-                    'Authorization': "Bearer " + token,
-                },
-                success: function (responce) {
+
+            admin.req({
+                url: layui.setter.api_base_url + 'api/public/captcha'
+                , type: 'POST'
+                , data: data.field
+                , success: function (data) {
                     $('#code').hide();
                     $('#is_code').show();
                     var time = 60;
@@ -130,11 +128,10 @@
                             $('#is_code').hide();
                         }
                     },1000);
-
                 },
-                error: function (err) {
+                error: function (error) {
                     alert('请求失败')
-                },
+                }
             });
             return false
         });
@@ -158,16 +155,11 @@
                     , time: 1000
                 });
             } else {
-                
-                $.ajax({
-                    url: layui.api + 'agent/api/wealth/add',
-                    type: 'POST',
-                    data: data.field,
-                    headers: {
-                        'Authorization': "Bearer " + token,
-                    },
-                    success: function (responce) {
-                        var data = responce;
+                admin.req({
+                    url: layui.setter.api_base_url + 'agent/api/wealth/add'
+                    , type: 'POST'
+                    , data: data.field
+                    , success: function (responce) {
                         if (data.succ === true) {
                             layer.msg(responce.msg, {
                                 offset: '15px'
@@ -175,6 +167,7 @@
                                 , time: 1000
                             });
                             layer.closeAll()
+                            tableData();123
                         } else {
                             layer.msg(responce.msg, {
                                 offset: '15px'
@@ -183,9 +176,9 @@
                             });
                         }
                     },
-                    error: function (err) {
+                    error: function (error) {
                         alert('请求失败')
-                    },
+                    }
                 });
                 return false
             }
@@ -209,9 +202,8 @@
         function tableData(){
             table.render({
                 elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
-                ,url: layui.api + 'agent/api/wealth/list'
+                ,url: layui.setter.api_base_url + 'agent/api/wealth/list'
                 , method: 'get'
-                
                 , dataType: "json"
                 , page: true // 开启分页
                 , where: searchData
@@ -247,10 +239,8 @@
                 type: 1,
                 area: ['600px', '480px'],
                 content: $('#layui-form').html(),
-                // btn: [ '取消'],
             });
 
-            form.render();
         });
         table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var layEvent = obj.event; //获得 lay-event 对应的值
@@ -259,12 +249,11 @@
                     '是否降级', {
                         btn: ['是', '否'] //可以无限个按钮
                     }, function (index, layero) {
-                        $.ajax({
-                            url: layui.api + 'agent/api/wealth/down',
-                            type: 'post',
-                            
-                            data: {'user_id': obj.data.user_id},
-                            success: function (data) {
+                        admin.req({
+                            url: layui.setter.api_base_url + 'agent/api/wealth/down'
+                            , type: 'POST'
+                            , data: {'user_id': obj.data.user_id}
+                            , success: function (data) {
                                 if (data.code == 200) {
                                     layer.msg(data.msg, {
                                         offset: '15px'
@@ -272,7 +261,7 @@
                                         , time: 1000
                                     });
                                     layer.closeAll('page'); //关闭信息框
-                                    form.render();
+                                    tableData();
                                 } else {
                                     layer.msg(data.msg, {
                                         offset: '15px'
@@ -282,7 +271,7 @@
                                 }
                             },
                             error: function (error) {
-                                console.log(error);
+                                alert('请求失败')
                             }
                         });
                     });

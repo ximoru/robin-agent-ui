@@ -1,96 +1,77 @@
-
 <title>设置我的资料</title>
 
 <div class="layui-card layadmin-header">
-  <div class="layui-breadcrumb" lay-filter="breadcrumb">
-    <a lay-href="">主页</a>
-    <a><cite>设置</cite></a>
-    <a><cite>我的资料</cite></a>
-  </div>
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>设置</cite></a>
+        <a><cite>我的资料</cite></a>
+    </div>
 </div>
 
 <div class="layui-fluid">
-  <div class="layui-row layui-col-space15">
-    <div class="layui-col-md12">
-      <div class="layui-card">
-        <div class="layui-card-header">设置我的资料</div>
-        <div class="layui-card-body" pad15>
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">设置我的资料</div>
+                <div class="layui-card-body" pad15>
 
-          <div class="layui-form" lay-filter="">
-            <!--<div class="layui-form-item">-->
-              <!--<label class="layui-form-label">我的角色</label>-->
-              <!--<div class="layui-input-inline">-->
-                <!--<select name="role" lay-verify="">-->
-                  <!--<option value="1" selected>超级管理员</option>-->
-                  <!--<option value="2" disabled>普通管理员</option>-->
-                  <!--<option value="3" disabled>审核员</option>-->
-                  <!--<option value="4" disabled>编辑人员</option>-->
-                <!--</select> -->
-              <!--</div>-->
-              <!--<div class="layui-form-mid layui-word-aux">当前角色不可更改为其它角色</div>-->
-            <!--</div>-->
-            <div class="layui-form-item">
-              <label class="layui-form-label">手机号</label>
-              <div class="layui-input-inline">
-                <input type="text" id="phone" disabled value="" readonly class="layui-input">
-              </div>
-              <div class="layui-form-mid layui-word-aux">不可修改。用于后台登入名</div>
-            </div>
-            <div class="layui-form-item">
-              <label class="layui-form-label">昵称</label>
-              <div class="layui-input-inline">
-                <input type="text" id="nickname" name="nickname" value="" lay-verify="nickname" autocomplete="off" placeholder="请输入昵称" class="layui-input">
-              </div>
-            </div>
-            <div class="layui-form-item">
-              <label class="layui-form-label">头像</label>
-              <div class="layui-input-inline">
-                <img id="portrait_img" src="" alt="" style="width: 100px;height: 100px;margin-bottom: 20px">
-                <input name="portrait" id="portrait_src" placeholder="图片地址" value="" class="layui-input">
-              </div>
-              <div class="layui-input-inline layui-btn-container" style="width: auto;margin-top: 120px">
-                <button type="button" class="layui-btn layui-btn-primary" id="portrait_upload">
-                  <i class="layui-icon">&#xe67c;</i>上传图片
-                </button>
-                <!--<button class="layui-btn layui-btn-primary" layadmin-event="avartatPreview">查看图片</button >-->
-              </div>
-            </div>
-            <div class="layui-form-item">
-              <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="setmyinfo">确认修改</button>
-                <!--<button type="reset" class="layui-btn layui-btn-primary">重新填写</button>-->
-              </div>
-            </div>
-          </div>
+                    <div class="layui-form" lay-filter="">
+                        <!--<div class="layui-form-item">-->
+                        <!--<label class="layui-form-label">我的角色</label>-->
+                        <!--<div class="layui-input-inline">-->
+                        <!--<select name="role" lay-verify="">-->
+                        <!--<option value="1" selected>超级管理员</option>-->
+                        <!--<option value="2" disabled>普通管理员</option>-->
+                        <!--<option value="3" disabled>审核员</option>-->
+                        <!--<option value="4" disabled>编辑人员</option>-->
+                        <!--</select> -->
+                        <!--</div>-->
+                        <!--<div class="layui-form-mid layui-word-aux">当前角色不可更改为其它角色</div>-->
+                        <!--</div>-->
 
+                        <script type="text/html" template
+                                lay-url="{{ layui.setter.api_base_url }}agent/api/user/info">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">手机号</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="phone" disabled value="{{ d.data.phone }}" readonly class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">不可修改。用于后台登入名</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">昵称</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="nickname" name="nickname" value="{{ d.data.nickname }}" lay-verify="nickname"
+                                           autocomplete="off" placeholder="请输入昵称" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">头像</label>
+                                <div class="layui-input-inline">
+                                    <img id="portrait_img" src="{{ d.data.portrait == '' ? 'http://bpic.588ku.com/element_origin_min_pic/01/48/88/2757444507812f6.jpg' : d.data.portrait }}" alt=""
+                                         style="width: 100px;height: 100px;margin-bottom: 20px">
+                                    <input name="portrait" id="portrait_src" placeholder="图片地址" value="{{ d.data.portrait }}"
+                                           class="layui-input">
+                                </div>
+                                <div class="layui-input-inline layui-btn-container"
+                                     style="width: auto;margin-top: 120px">
+                                    <button type="button" class="layui-btn layui-btn-primary" id="portrait_upload">
+                                        <i class="layui-icon">&#xe67c;</i>上传图片
+                                    </button>
+                                    <!--<button class="layui-btn layui-btn-primary" layadmin-event="avartatPreview">查看图片</button >-->
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="setmyinfo">确认修改</button>
+                                    <!--<button type="reset" class="layui-btn layui-btn-primary">重新填写</button>-->
+                                </div>
+                            </div>
+                        </script>
+                    </div>
+
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
-
-<script>
-layui.use('set', layui.factory('set'));
-
-
-var $ = layui.$;
-$.ajax({
-    url: layui.api + 'agent/api/user/info',
-    type: 'get',
-    
-    dataType: 'json',
-    success: function (data) {
-        var requset_data = data.data;
-        if(data.code != 200) {
-            layer.msg(data.msg);
-        } else {
-            $('#phone').val(requset_data.phone);
-            $('#nickname').val(requset_data.nickname);
-
-            $('#portrait_img').attr("src", requset_data.portrait == null ? 'http://bpic.588ku.com/element_origin_min_pic/01/48/88/2757444507812f6.jpg' : requset_data.portrait);
-            $('#portrait').val(requset_data.portrait == null ? '' : requset_data.portrait);
-        }
-    }
-});
-
-</script>
