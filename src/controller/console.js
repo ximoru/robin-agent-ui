@@ -45,7 +45,8 @@ layui.define(function (exports) {
     layui.use(['carousel', 'echarts'], function () {
         var $ = layui.$
             , carousel = layui.carousel
-            , echarts = layui.echarts;
+            , echarts = layui.echarts
+            , admin = layui.admin;
 
         var echartsApp = [], options = [
             //今日流量趋势
@@ -152,14 +153,10 @@ layui.define(function (exports) {
             window.onresize = echartsApp[index].resize;
         };
 
-        
-
         // 获取系统信息
-        $.ajax({
-            url: layui.api + 'agent/api/home/figure',
-            type: 'get',
-            
-            dataType: 'json',
+        admin.req({
+            url: layui.setter.api_base_url + 'agent/api/home/figure',
+            type: 'GET',
             success: function (data) {
                 options = [
                     {
