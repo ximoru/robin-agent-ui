@@ -51,11 +51,12 @@
 </div>
 
 <script>
-    layui.use(['laydate', 'form', 'table'], function () {
+    layui.use(['laydate', 'form', 'table', 'admin'], function () {
         var $ = layui.jquery
             ,laydate = layui.laydate
             ,form = layui.form
             ,table = layui.table
+            ,admin = layui.admin
             ,searchData = [];
 
         form.render();
@@ -125,12 +126,11 @@
                     '是否升级', {
                         btn: ['是', '否'] //可以无限个按钮
                     }, function (index, layero) {
-                        $.ajax({
-                            url: layui.setter.api_base_url + 'agent/api/customer/lift',
-                            type: 'post',
-
-                            data: {'user_id': obj.data.user_id},
-                            success: function (data) {
+                        admin.req({
+                            url: layui.setter.api_base_url + 'agent/api/customer/lift'
+                            , type: 'POST'
+                            , data: {'user_id': obj.data.user_id}
+                            , success: function (data) {
                                 if (data.code == 200) {
                                     layer.msg(data.msg, {
                                         offset: '15px'

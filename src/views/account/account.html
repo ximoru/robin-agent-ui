@@ -17,7 +17,9 @@
             <div class="layui-col-md5">
                 <div class="layui-card">
                     <div class="layui-card-body">
-                        <div class="acount_img"><img src="{{ d.data.portrait == '' ? 'http://bpic.588ku.com/element_origin_min_pic/01/48/88/2757444507812f6.jpg' : d.data.portrait }}" alt=""></div>
+                        <div class="acount_img"><img
+                                src="{{ d.data.portrait == null  ? 'http://bpic.588ku.com/element_origin_min_pic/01/48/88/2757444507812f6.jpg' : d.data.portrait }}"
+                                alt=""></div>
                         <div class="name" id="nickname"></div>
                         <ul class="site-doc-color">
                             <li style="background-color: #5FB878;">
@@ -110,31 +112,3 @@
 
     </script>
 </div>
-<!--<script>-->
-
-    <!--var $ = layui.$;-->
-    <!--$.ajax({-->
-        <!--url: layui.setter.api_base_url + 'agent/api/my/account',-->
-        <!--type: 'get',-->
-
-        <!--dataType: 'json',-->
-        <!--success: function (data) {-->
-            <!--var requset_data = data.data;-->
-            <!--$('#portrait').attr('src', requset_data.portrait == null ? 'http://bpic.588ku.com/element_origin_min_pic/01/48/88/2757444507812f6.jpg' : requset_data.portrait);-->
-            <!--$('#nickname').html(requset_data.nickname);-->
-            <!--$('#total_balance').html(requset_data.total_balance);-->
-            <!--$('#balance').html(requset_data.balance);-->
-            <!--$('#status').html(requset_data.status == 1 ? '正常' : '未激活');-->
-            <!--$('#phone').html(requset_data.phone);-->
-            <!--$('#area').html(requset_data.area);-->
-            <!--$('#promote_code').html(requset_data.promote_code);-->
-            <!--$('#realname').html(requset_data.realname);-->
-            <!--$('#identification').html(requset_data.identification);-->
-            <!--$('#created_at').html(requset_data.created_at);-->
-            <!--$('#remaining_tickets').html(requset_data.remaining_tickets);-->
-            <!--$('#users').html(requset_data.users);-->
-            <!--$('#activationUsers').html(requset_data.activationUsers);-->
-            <!--$('#position').html(requset_data.position);-->
-        <!--}-->
-    <!--});-->
-<!--</script>-->

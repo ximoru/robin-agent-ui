@@ -80,7 +80,6 @@
                 elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
                 , url: layui.setter.api_base_url + 'agent/api/my/code/list'
                 , method: 'get'
-
                 , page: true // 开启分页
                 , where: searchData
                 , response: {
@@ -101,11 +100,6 @@
                     } // 转入转出使用回收
                     , {field: 'count', title: '数量'}
                     , {field: 'purpose', title: '用途'}
-                    // , {
-                    //     field: 'agent_id', title: '操作人', templet: function (d) {
-                    //         return d.agent == null ? '' : d.agent.nickname;
-                    //     }
-                    // }
                     , {field: 'created_at', title: '操作时间'}
                     , {field: 'remark', title: '备注'}
                 ]], //设置表头

@@ -138,10 +138,11 @@
     </form>
 </script>
 <script>
-    layui.use(['laydate', 'form', 'table'], function () {
+    layui.use(['laydate', 'form', 'table', 'admin'], function () {
         var $ = layui.jquery
             , laydate = layui.laydate
             , form = layui.form
+            , admin = layui.admin
             , table = layui.table;
         form.render();
 
@@ -153,17 +154,15 @@
             }
         });
 
-        form.on('submit(submit_go)', function (data) {
+        form.on('submit(submit_go)', function (obj) {
             // 提交表单
-            $.ajax({
-                url: layui.setter.api_base_url + 'agent/api/my/card/add',
-                type: 'post',
-
-                data: data.field,
-                dataType: 'json',
-                success: function (data) {
-                    if (data.code == 200) {
-                        layer.msg(data.msg, {
+            admin.req({
+                url: layui.setter.api_base_url + 'agent/api/my/card/add'
+                , type: 'POST'
+                , data: obj.field
+                , done: function (res) {
+                    if (res.code == 200) {
+                        layer.msg(res.msg, {
                             offset: '15px'
                             , icon: 1
                             , time: 1000
@@ -171,7 +170,7 @@
                         tableData();
                         layer.closeAll('page'); //关闭信息框
                     } else {
-                        layer.msg(data.msg, {
+                        layer.msg(res.msg, {
                             offset: '15px'
                             , icon: 1
                             , time: 1000
@@ -179,7 +178,6 @@
                     }
                 }
             });
-            // }
             return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
         });
         laydate.render({
@@ -193,7 +191,6 @@
                 elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
                 , url: layui.setter.api_base_url + 'agent/api/my/card/list'
                 , method: 'get'
-
                 , response: {
                     statusName: 'code' //规定数据状态的字段名称，默认：code
                     , statusCode: 200 //规定成功的状态码，默认：0

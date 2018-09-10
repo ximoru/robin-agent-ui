@@ -91,7 +91,6 @@ layui.define(['form', 'upload'], function (exports) {
         admin.req({
             url: layui.setter.api_base_url + 'agent/api/user/edit'
             , type: 'post'
-
             , data: obj.field
             , success: function (res) {
                 if (res.code == 200) {
