@@ -62,11 +62,11 @@ layui.define(['layer', 'table'], function (exports) {
                 for (var i = 0; i < data.length; i++) {
                     if (data[i].pid == s_pid) {
                         var len = mData.length;
-                        if (len > 0 && mData[len - 1].agent_id == s_pid) {
+                        if (len > 0 && mData[len - 1].id == s_pid) {
                             mData[len - 1].isParent = true;
                         }
                         mData.push(data[i]);
-                        sort(data[i].agent_id, data);
+                        sort(data[i].id, data);
                     }
                 }
             };
