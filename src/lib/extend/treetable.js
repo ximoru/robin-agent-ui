@@ -70,6 +70,8 @@ layui.define(['layer', 'table'], function (exports) {
                     }
                 }
             };
+
+            param.treeSpid = layui.setter.treesPid; // 拿取的是登录人的用户id
             sort(param.treeSpid, tNodes);
 
             // 重写参数
