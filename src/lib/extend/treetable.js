@@ -41,12 +41,12 @@ layui.define(['layer', 'table'], function (exports) {
             // 补上id和pid字段
             for (var i = 0; i < tNodes.length; i++) {
                 var tt = tNodes[i];
-                if (!tt.id) {
+                if (!tt.agent_id) {
                     if (!param.treeIdName) {
                         layer.msg('参数treeIdName不能为空', {icon: 5});
                         return;
                     }
-                    tt.id = tt[param.treeIdName];
+                    tt.agent_id = tt[param.treeIdName];
                 }
                 if (!tt.pid) {
                     if (!param.treePidName) {
@@ -62,14 +62,16 @@ layui.define(['layer', 'table'], function (exports) {
                 for (var i = 0; i < data.length; i++) {
                     if (data[i].pid == s_pid) {
                         var len = mData.length;
-                        if (len > 0 && mData[len - 1].id == s_pid) {
+                        if (len > 0 && mData[len - 1].agent_id == s_pid) {
                             mData[len - 1].isParent = true;
                         }
                         mData.push(data[i]);
-                        sort(data[i].id, data);
+                        sort(data[i].agent_id, data);
                     }
                 }
             };
+
+            param.treeSpid = JSON.parse(window.localStorage.robinFin).treesPid; // 拿取的是登录人的用户id
             sort(param.treeSpid, tNodes);
 
             // 重写参数
@@ -80,7 +82,7 @@ layui.define(['layer', 'table'], function (exports) {
                 limit: param.data.length
             };
             param.cols[0][param.treeColIndex].templet = function (d) {
-                var mId = d.id;
+                var mId = d.agent_id;
                 var mPid = d.pid;
                 var isDir = d.isParent;
                 var emptyNum = treetable.getEmptyNum(mPid, mData);
@@ -126,7 +128,7 @@ layui.define(['layer', 'table'], function (exports) {
             }
             var tPid;
             for (var i = 0; i < data.length; i++) {
-                if (pid == data[i].id) {
+                if (pid == data[i].agent_id) {
                     num += 1;
                     tPid = data[i].pid;
                     break;

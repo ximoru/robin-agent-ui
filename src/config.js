@@ -28,6 +28,7 @@ layui.define(['laytpl', 'layer', 'element', 'util'], function(exports){
     ,request: {
       tokenName: 'Authorization' //自动携带 token 的字段名。可设置 false 不携带。
     }
+    ,treesPid: 'treesPid'
 
     ,api_base_url: 'http://api.robin.laralab.org/' // 测试地址
 
