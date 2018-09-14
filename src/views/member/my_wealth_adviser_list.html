@@ -156,14 +156,14 @@
                     , type: 'POST'
                     , data: data.field
                     , success: function (responce) {
-                        if (data.succ === true) {
+                        if (responce.succ === true) {
                             layer.msg(responce.msg, {
                                 offset: '15px'
                                 , icon: 1
                                 , time: 1000
                             });
                             layer.closeAll()
-                            tableData();123
+                            tableData();
                         } else {
                             layer.msg(responce.msg, {
                                 offset: '15px'
@@ -211,15 +211,21 @@
                     , dataName: 'data' //规定数据列表的字段名称，默认：data
                 }
                 ,cols: [[
-                    {field: 'id', title: '序号'}
+                    {type: 'numbers'}
                     ,{field: 'phone', title: '手机号'}
                     ,{field: 'nickname', title: '昵称'}
-                    ,{field: 'total_balance', title: '码钱'}
-                    ,{field: 'total_commission', title: '佣金'}
-                    ,{field: 'status', title: '激活会员',templet:function(d){
-                            return d.status == 1 ? '激活' : '未激活';
+                    ,{field: 'total_balance', title: '码钱',templet:function(d){
+                            return d.wallet.total_balance;
                         }}
-                    ,{field: 'remaining_tickets', title: '剩余激活码数'}
+                    ,{field: 'total_commission', title: '佣金',templet:function(d){
+                            return d.wallet.total_commission;
+                        }}
+                    ,{field: 'status', title: '激活会员',templet:function(d){
+                            return d.activation == 1 ? '激活' : '未激活';
+                        }}
+                    ,{field: 'remaining_tickets', title: '剩余激活码数',templet:function(d){
+                            return d.wallet.remaining_tickets;
+                        }}
                     ,{field: 'created_at', title: '注册时间'}
                     ,{field: 'updated_at', title: '升级时间'}
                     // , {
