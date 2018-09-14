@@ -18,9 +18,11 @@
                 <div class="layui-card">
                     <div class="layui-card-body">
                         <div class="acount_img"><img
-                                src="{{ d.data.portrait == null  ? 'http://bpic.588ku.com/element_origin_min_pic/01/48/88/2757444507812f6.jpg' : d.data.portrait }}"
+                                src="{{ (d.data.portrait == null || d.data.portrait == '')  ? 'http://bpic.588ku.com/element_origin_min_pic/01/48/88/2757444507812f6.jpg' : d.data.portrait }}"
                                 alt=""></div>
-                        <div class="name" id="nickname"></div>
+                        <div class="name">
+                            {{ d.data.nickname }}
+                        </div>
                         <ul class="site-doc-color">
                             <li style="background-color: #5FB878;">
                                 <p>总收益</p>
