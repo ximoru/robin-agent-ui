@@ -85,7 +85,7 @@
                     {field: 'used_tickets', title: '激活会员'},
                     {
                         field: 'remaining_tickets', width: 250, templet: function (d) {
-                            return '<div class="layui-progress layui-progress-big" style="height: 15px;margin-top: 6px" lay-showPercent="yes"><div class="layui-progress-bar" style="height: 15px;" lay-percent="' + d.used_tickets + '/' + (d.used_tickets + d.remaining_tickets) + '"></div></div>'
+                            return '<div class="layui-progress layui-progress-big" style="height: 15px;margin-top: 6px" lay-showPercent="yes"><div class="layui-progress-bar" style="height: 15px;" lay-percent="' + d.remaining_tickets + '/' + (d.used_tickets + d.remaining_tickets) + '"></div></div>'
                         }, title: '剩余激活码'
                     },
                     {field: 'created_at', title: '注册时间'},
