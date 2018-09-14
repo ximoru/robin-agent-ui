@@ -100,14 +100,14 @@
                             return d.activation == 1 ? '激活' : '未激活';
                         }}
                     ,{field: 'created_at', title: '激活时间'}
-                    ,{field: 'operation', width: 140, align: 'center',templet: function (d) {
-                            if (d.type == 1) {
-                                return '<a class="layui-btn layui-btn-sm" lay-event="up_level" id="up_level">升级财富顾问</a>';
-                            } else {
-                                return '<a class="layui-btn layui-btn-sm layui-btn-disabled">升级财富顾问</a>';
-                            }
-
-                        }, title: '操作'}
+                    // ,{field: 'operation', width: 140, align: 'center',templet: function (d) {
+                    //         if (d.type == 1) {
+                    //             return '<a class="layui-btn layui-btn-sm" lay-event="up_level" id="up_level">升级财富顾问</a>';
+                    //         } else {
+                    //             return '<a class="layui-btn layui-btn-sm layui-btn-disabled">升级财富顾问</a>';
+                    //         }
+                    //
+                    //     }, title: '操作'}
                 ]], //设置表头
             });
         }
