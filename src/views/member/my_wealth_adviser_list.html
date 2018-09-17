@@ -12,26 +12,27 @@
     <div class="layui-card">
         <form class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layadmin-userfront-formlist">
             <div class="layui-form-item">
-                <div class="layui-inline">
-                    <button class="layui-btn" id="add_adviesr">＋新增</button>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">注册时间：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" class="layui-input" id="test6" placeholder=" - " name="time">
-                    </div>
-                </div>
+                <h3>我的财富顾问</h3>
+                <!--<div class="layui-inline">-->
+                    <!--<button class="layui-btn" id="add_adviesr">＋新增</button>-->
+                <!--</div>-->
+                <!--<div class="layui-inline">-->
+                    <!--<label class="layui-form-label">注册时间：</label>-->
+                    <!--<div class="layui-input-inline">-->
+                        <!--<input type="text" class="layui-input" id="test6" placeholder=" - " name="time">-->
+                    <!--</div>-->
+                <!--</div>-->
 
-                <div class="layui-inline">
-                    <label class="layui-form-label">姓名：</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="name" placeholder="请输入关键字" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <button class="layui-btn" id="btn-search" lay-submit lay-filter="search">搜索</button>
-                    <button class="layui-btn  layui-btn-primary" type="reset">重置</button>
-                </div>
+                <!--<div class="layui-inline">-->
+                    <!--<label class="layui-form-label">姓名：</label>-->
+                    <!--<div class="layui-input-block">-->
+                        <!--<input type="text" name="name" placeholder="请输入关键字" autocomplete="off" class="layui-input">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="layui-inline">-->
+                    <!--<button class="layui-btn" id="btn-search" lay-submit lay-filter="search">搜索</button>-->
+                    <!--<button class="layui-btn  layui-btn-primary" type="reset">重置</button>-->
+                <!--</div>-->
             </div>
         </form>
         <div class="layui-card-body">
@@ -212,8 +213,12 @@
                 }
                 ,cols: [[
                     {type: 'numbers'}
-                    ,{field: 'phone', title: '手机号'}
-                    ,{field: 'nickname', title: '昵称'}
+                    ,{field: 'phone', title: '手机号',templet:function(d){
+                            return d.user.phone;
+                        }}
+                    ,{field: 'nickname', title: '昵称',templet:function(d){
+                            return d.user.nickname;
+                        }}
                     ,{field: 'total_balance', title: '码钱',templet:function(d){
                             return d.wallet.total_balance;
                         }}
@@ -221,13 +226,17 @@
                             return d.wallet.total_commission;
                         }}
                     ,{field: 'status', title: '激活会员',templet:function(d){
-                            return d.activation == 1 ? '激活' : '未激活';
+                            return d.user.activation == 1 ? '激活' : '未激活';
                         }}
                     ,{field: 'remaining_tickets', title: '剩余激活码数',templet:function(d){
                             return d.wallet.remaining_tickets;
                         }}
-                    ,{field: 'created_at', title: '注册时间'}
-                    ,{field: 'updated_at', title: '升级时间'}
+                    ,{field: 'created_at', title: '注册时间',templet:function(d){
+                            return d.user.created_at.substr(0,10);
+                        }}
+                    ,{field: 'updated_at', title: '升级时间',templet:function(d){
+                            return d.user.updated_at.substr(0,10);
+                        }}
                     // , {
                     //     field: 'operation', width: 100, align: 'center', templet: '#backTickets',title: '操作'
                     // }
