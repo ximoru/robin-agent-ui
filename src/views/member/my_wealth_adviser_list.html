@@ -12,7 +12,7 @@
     <div class="layui-card">
         <form class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layadmin-userfront-formlist">
             <div class="layui-form-item">
-                <h3>我的财富顾问</h3>
+                <h2>我的财富顾问</h2>
                 <!--<div class="layui-inline">-->
                     <!--<button class="layui-btn" id="add_adviesr">＋新增</button>-->
                 <!--</div>-->
@@ -219,14 +219,11 @@
                     ,{field: 'nickname', title: '昵称',templet:function(d){
                             return d.user.nickname;
                         }}
-                    ,{field: 'total_balance', title: '码钱',templet:function(d){
+                    ,{field: 'total_balance', align: 'right', title: '码钱（人民币/¥）',templet:function(d){
                             return d.wallet.total_balance;
                         }}
-                    ,{field: 'total_commission', title: '佣金',templet:function(d){
+                    ,{field: 'total_commission', align: 'right', title: '佣金（人民币/¥）',templet:function(d){
                             return d.wallet.total_commission;
-                        }}
-                    ,{field: 'status', title: '激活会员',templet:function(d){
-                            return d.user.activation == 1 ? '激活' : '未激活';
                         }}
                     ,{field: 'remaining_tickets', title: '剩余激活码数',templet:function(d){
                             return d.wallet.remaining_tickets;
@@ -234,9 +231,9 @@
                     ,{field: 'created_at', title: '注册时间',templet:function(d){
                             return d.user.created_at.substr(0,10);
                         }}
-                    ,{field: 'updated_at', title: '升级时间',templet:function(d){
-                            return d.user.updated_at.substr(0,10);
-                        }}
+                    // ,{field: 'updated_at', title: '升级时间',templet:function(d){
+                    //         return d.user.updated_at.substr(0,10);
+                    //     }}
                     // , {
                     //     field: 'operation', width: 100, align: 'center', templet: '#backTickets',title: '操作'
                     // }
