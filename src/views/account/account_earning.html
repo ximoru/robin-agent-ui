@@ -133,12 +133,6 @@
                 }
                 , cols: [[
                     {type: 'numbers'}
-                    // , {field: 'id', title: '订单编号'}
-                    , {
-                        field: 'agent_parent', title: '收益人', templet: function (d) {
-                            return d.agent.nickname;
-                        }
-                    }
                     , {field: 'number', title: '激活码流水订单编号'}
                     , {
                         field: 'type', title: '收益类型', templet: function (d) {
