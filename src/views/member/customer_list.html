@@ -100,11 +100,12 @@
                     ,{field: 'parent_name', title: '推荐人', templet: function (d) {
                             return d.user_parent ? d.user_parent.nickname + (d.user_parent.type == 1 ? ' (普通用户)' : ' (财富顾问)') : '';
                         }}
-                    ,{field: 'created_at', title: '注册时间'}
                     ,{field: 'activation', title: '是否激活', templet: function (d) {
-                            return d.activation == 1 ? '激活' : '未激活';
+                            return d.user.activation == 1 ? '激活' : '未激活';
                         }}
-                    ,{field: 'created_at', title: '激活时间'}
+                    ,{field: 'created_at', title: '注册时间', templet: function (d) {
+                            return d.user.created_at.substr(0,10);
+                        }}
                     // ,{field: 'operation', width: 140, align: 'center',templet: function (d) {
                     //         if (d.type == 1) {
                     //             return '<a class="layui-btn layui-btn-sm" lay-event="up_level" id="up_level">升级财富顾问</a>';
