@@ -89,7 +89,7 @@
                 , cols: [[
                     {type: 'numbers'}
                     ,{field: 'type', title: '客户类型', templet: function (d) {
-                            return d.type == 1 ? '普通用户' : (d.type == 2 ? '财富顾问' : '普通用户');
+                            return d.user.type == 1 ? '普通用户' : (d.user.type == 2 ? '财富顾问' : '普通用户');
                         }}
                     ,{field: 'phone', title: '手机号', templet: function (d) {
                             return d.user.phone;
