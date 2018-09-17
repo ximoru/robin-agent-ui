@@ -1,10 +1,10 @@
-<title>我的激活码收益</title>
+<title>我的佣金收益</title>
 
 <div class="layui-card layadmin-header">
     <div class="layui-breadcrumb" lay-filter="breadcrumb">
         <a lay-href="">主页</a>
         <a><cite>我的管理</cite></a>
-        <a><cite>我的激活码收益</cite></a>
+        <a><cite>我的佣金收益</cite></a>
     </div>
 </div>
 
@@ -12,7 +12,7 @@
     <div class="layui-card">
         <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layadmin-userfront-formlist">
             <div class="layui-form-item">
-                <h2>我的激活码收益</h2>
+                <h2>我的佣金收益</h2>
                 <!--<div class="layui-inline">-->
                     <!--<button class="layui-btn" id="add_tixian" lay-href="account/account_withdrawal">我要提现</button>-->
                 <!--</div>-->
@@ -120,7 +120,7 @@
         function tableData() {
             table.render({
                 elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
-                , url: layui.setter.api_base_url + 'agent/api/my/balance/list'
+                , url: layui.setter.api_base_url + 'agent/api/my/commission/list'
                 , method: 'get'
                 , page: true // 开启分页
                 , where: searchData
@@ -133,34 +133,14 @@
                 }
                 , cols: [[
                     {type: 'numbers'}
-                    // , {field: 'id', title: '订单编号'}
                     , {
                         field: 'agent_parent', title: '收益人', templet: function (d) {
                             return d.agent.nickname;
                         }
                     }
-                    , {field: 'number', title: '激活码流水订单编号'}
-                    , {
-                        field: 'type', title: '收益类型', templet: function (d) {
-                            switch (d.type) {
-                                case 1:
-                                    return '会员激活';
-
-                                case 2:
-                                    return '开通财富顾问';
-
-                                case 3:
-                                    return '回收财富顾问';
-
-                                case 4:
-                                    return '下级代理购码';
-
-                                case 5:
-                                    return '提现';
-                            }
-                        }
-                    }
-                    , {field: 'balance', align: 'right', title: '收益金额'}
+                    , {field: 'number', title: '订单号'}
+                    , {field: 'order_id', title: '平仓单号'}
+                    , {field: 'commission', align: 'right', title: '收益佣金'}
                     , {field: 'remark', title: '备注'}
                     , {field: 'created_at', title: '收益时间',templet:function(d){
                             return d.created_at.substr(0,10);
