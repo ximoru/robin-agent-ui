@@ -225,6 +225,9 @@
                     ,{field: 'total_commission', align: 'right', title: '佣金（人民币/¥）',templet:function(d){
                             return d.wallet.total_commission;
                         }}
+                    ,{field: 'used_tickets', title: '激活会员',templet:function(d){
+                            return d.wallet.used_tickets;
+                        }}
                     ,{field: 'remaining_tickets', title: '剩余激活码数',templet:function(d){
                             return d.wallet.remaining_tickets;
                         }}

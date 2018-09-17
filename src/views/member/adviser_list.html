@@ -12,23 +12,24 @@
     <div class="layui-card">
         <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layadmin-userfront-formlist">
             <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">注册时间：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" class="layui-input" name="time" id="time" placeholder=" - ">
-                    </div>
-                </div>
+                <h2>顾问排行榜</h2>
+                <!--<div class="layui-inline">-->
+                    <!--<label class="layui-form-label">注册时间：</label>-->
+                    <!--<div class="layui-input-inline">-->
+                        <!--<input type="text" class="layui-input" name="time" id="time" placeholder=" - ">-->
+                    <!--</div>-->
+                <!--</div>-->
 
-                <div class="layui-inline">
-                    <label class="layui-form-label">姓名：</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="name" placeholder="请输入关键字" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <button class="layui-btn" id="btn-search" lay-submit lay-filter="submit_go">搜索</button>
-                    <button class="layui-btn">重置</button>
-                </div>
+                <!--<div class="layui-inline">-->
+                    <!--<label class="layui-form-label">姓名：</label>-->
+                    <!--<div class="layui-input-block">-->
+                        <!--<input type="text" name="name" placeholder="请输入关键字" autocomplete="off" class="layui-input">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="layui-inline">-->
+                    <!--<button class="layui-btn" id="btn-search" lay-submit lay-filter="submit_go">搜索</button>-->
+                    <!--<button class="layui-btn">重置</button>-->
+                <!--</div>-->
             </div>
         </div>
         <div class="layui-card-body">
@@ -76,17 +77,20 @@
                     , dataName: 'data'//规定数据列表的字段名称，默认：data
                 }
                 , cols: [[
-                    {field: 'id', title: '序号'}
-                    ,{field: 'relation_type', title: '顾问类型'}
-                    ,{field: 'phone', title: '手机号'}
-                    ,{field: 'nickname', title: '昵称'}
-                    ,{field: 'realname', title: '姓名'}
-                    ,{field: 'total_balance', title: '码钱'}
-                    ,{field: 'total_commission', title: '佣金'}
+                    {type: 'numbers'}
+                    ,{field: 'phone', title: '手机号',templet:function(d){
+                            return d.user.phone;
+                        }}
+                    ,{field: 'nickname', title: '昵称',templet:function(d){
+                            return d.user.nickname;
+                        }}
+                    ,{field: 'total_balance', align: 'right', title: '码钱（人民币/¥）'}
+                    ,{field: 'total_commission', align: 'right', title: '佣金（人民币/¥）'}
                     ,{field: 'used_tickets', title: '激活会员'}
                     ,{field: 'remaining_tickets', title: '剩余激活码数'}
-                    ,{field: 'binding', title: '绑定会员'}
-                    ,{field: 'created_at', title: '注册时间'}
+                    ,{field: 'created_at', title: '注册时间',templet:function(d){
+                            return d.user.created_at.substr(0,10);
+                        }}
                     // ,{field: 'status', title: '是否激活', templet: function (d) {
                     //         return d.status == 1 ? '激活' : '未激活';
                     //     }}
