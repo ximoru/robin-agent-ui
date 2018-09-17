@@ -12,23 +12,24 @@
     <div class="layui-card">
         <form class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layadmin-userfront-formlist">
             <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">注册时间：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="time" class="layui-input" id="test6" placeholder=" - ">
-                    </div>
-                </div>
+                <h2>间接财富顾问</h2>
+                <!--<div class="layui-inline">-->
+                    <!--<label class="layui-form-label">注册时间：</label>-->
+                    <!--<div class="layui-input-inline">-->
+                        <!--<input type="text" name="time" class="layui-input" id="test6" placeholder=" - ">-->
+                    <!--</div>-->
+                <!--</div>-->
 
-                <div class="layui-inline">
-                    <label class="layui-form-label">姓名：</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="name" placeholder="请输入关键字" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <button class="layui-btn" id="btn-search" lay-submit lay-filter="*">搜索</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                </div>
+                <!--<div class="layui-inline">-->
+                    <!--<label class="layui-form-label">姓名：</label>-->
+                    <!--<div class="layui-input-block">-->
+                        <!--<input type="text" name="name" placeholder="请输入关键字" autocomplete="off" class="layui-input">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="layui-inline">-->
+                    <!--<button class="layui-btn" id="btn-search" lay-submit lay-filter="*">搜索</button>-->
+                    <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+                <!--</div>-->
             </div>
         </form>
         <div class="layui-card-body">
@@ -78,24 +79,25 @@
                     , dataName: 'data' //规定数据列表的字段名称，默认：data
                 }
                 ,cols: [[
-                    {field: 'type', title: '序号'}
-                    ,{field: 'phone', title: '手机号'}
-                    ,{field: 'nickname', title: '昵称'}
-                    ,{field: 'realname', title: '姓名'}
-                    ,{field: 'total_balance', title: '码钱总收益', templet:function(d){
-                        return d.wallet.total_balance;
-                    }}
-                    ,{field: 'total_commission', title: '佣金总收益', templet:function(d){
-                        return d.wallet.total_commission
-                    }}
-                    ,{field: 'activation', title: '激活会员', templet:function(d){
-                            return d.wallet.used_tickets
+                    {type: 'numbers'}
+                    ,{field: 'phone', title: '手机号',templet:function(d){
+                            return d.user.phone;
                         }}
-                    ,{field: 'remaining_tickets', title: '剩余码数', templet:function(d){
-                        return d.wallet.remaining_tickets
-                        }
-                    }
-                    ,{field: 'created_at', title: '注册时间'}
+                    ,{field: 'nickname', title: '昵称',templet:function(d){
+                            return d.user.nickname;
+                        }}
+                    ,{field: 'total_balance', align: 'right', title: '码钱（人民币/¥）',templet:function(d){
+                            return d.wallet.total_balance;
+                        }}
+                    ,{field: 'total_commission', align: 'right', title: '佣金（人民币/¥）',templet:function(d){
+                            return d.wallet.total_commission;
+                        }}
+                    ,{field: 'remaining_tickets', title: '剩余激活码数',templet:function(d){
+                            return d.wallet.remaining_tickets;
+                        }}
+                    ,{field: 'created_at', title: '注册时间',templet:function(d){
+                            return d.user.created_at.substr(0,10);
+                        }}
                 ]], //设置表头
             });
         }
