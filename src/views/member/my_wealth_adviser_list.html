@@ -237,9 +237,9 @@
                     // ,{field: 'updated_at', title: '升级时间',templet:function(d){
                     //         return d.user.updated_at.substr(0,10);
                     //     }}
-                    // , {
-                    //     field: 'operation', width: 100, align: 'center', templet: '#backTickets',title: '操作'
-                    // }
+                    , {
+                        field: 'operation', align: 'center', templet: '#backTickets',title: '操作'
+                    }
                 ]], //设置表头
             });
         }
@@ -254,9 +254,10 @@
         });
         table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
             var layEvent = obj.event; //获得 lay-event 对应的值
+            const nickname = obj.data.user.nickname;
             if(layEvent === 'down_level'){ //删除
                 layer.confirm(
-                    '是否降级', {
+                    '是否回收 ' + nickname + ' 激活码，并降级成普通客户。', {
                         btn: ['是', '否'] //可以无限个按钮
                     }, function (index, layero) {
                         admin.req({
