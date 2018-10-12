@@ -90,7 +90,7 @@
                     // , {field: 'id', title: '订单编号'}
                     , {
                         field: 'type', title: '类型', templet: function (d) {
-                            return d.type == 1 ? '会员注册借用' : (d.type == 2 ? '开通财富顾问' : (d.type == 3 ? '回收财富顾问' : (d.type == 4 ? '上级代理拨码' : ((d.type == 4 ? '后台拨码' : '其他')))));
+                            return d.type == 1 ? '会员注册借用' : (d.type == 2 ? '开通财富顾问' : (d.type == 3 ? '回收财富顾问' : (d.type == 4 ? '上级代理拨码' : ((d.type == 5 ? '下级代理购码' : (d.type == 6 ? '后台拨码' : '其他'))))));
                         }
                     } // 转入转出使用回收
                     , {field: 'count', title: '数量'}
