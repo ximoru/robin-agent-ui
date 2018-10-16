@@ -162,14 +162,14 @@
             , success: function (data) {
                 var requset_data = data.data.data;
                 if (!requset_data) {
-                    $('.withdrawal_card').html('<button lay-href="account/account_card" class="layui-btn layui-btn-sm">添加地址</button>');
+                    $('.withdrawal_card').html('<button lay-href="account/account_card" class="layui-btn layui-btn-sm">添加提现卡</button>');
                 } else {
                     $('.withdrawal_card').html(function () {
                         var $html = '';
                         for (var i = 0; i < requset_data.length; i++) {
                             $html += '<input type="radio" name="card" value="' + requset_data[i].id + '" title="银行卡：' + requset_data[i].card_number + '【' + requset_data[i].bank_branch + '】">'
                         }
-                        return '<div>' + $html + '</div><button lay-href="account/account_card" class="layui-btn layui-btn-sm">添加地址</button>';
+                        return '<div>' + $html + '</div><button lay-href="account/account_card" class="layui-btn layui-btn-sm">添加提现卡</button>';
                     });
                     form.render();
                 }
@@ -190,7 +190,7 @@
                         for (var i = 0; i < requset_data.length; i++) {
                             $html += '<input type="radio" name="address" value="' + requset_data[i].id + '" title="' + requset_data[i].province+requset_data[i].city+requset_data[i].town+requset_data[i].address+'">'
                         }
-                        return '<div>' + $html + '</div><button lay-href="account/account_address" class="layui-btn layui-btn-sm">添加提现卡</button>';
+                        return '<div>' + $html + '</div><button lay-href="account/account_address" class="layui-btn layui-btn-sm">添加地址</button>';
                     });
                     form.render();
                 }
