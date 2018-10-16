@@ -63,6 +63,16 @@
                 "name": "accountCode",
                 "title": "我的激活码",
                 "jump": "account/account_code"
+            },
+            {
+                "name": "accountRecord",
+                "title": "我的提现记录",
+                "jump": "account/account_record"
+            },
+            {
+                "name": "accountCard",
+                "title": "我的提现卡",
+                "jump": "account/account_card"
             }
         ]
     }
