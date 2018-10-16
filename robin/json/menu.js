@@ -50,11 +50,6 @@
                 "jump": "account/account"
             },
             {
-                "name": "accountUpdate",
-                "title": "升级通知",
-                "jump": "account/account_update"
-            },
-            {
                 "name": "accountEarning",
                 "title": "我的收益",
                 "jump": "account/account_earning"
@@ -63,11 +58,6 @@
                 "name": "accountCode",
                 "title": "我的激活码",
                 "jump": "account/account_code"
-            },
-            {
-                "name": "accountRecord",
-                "title": "我的提现记录",
-                "jump": "account/account_record"
             },
             {
                 "name": "accountCard",

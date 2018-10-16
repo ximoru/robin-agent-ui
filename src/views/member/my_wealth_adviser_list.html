@@ -63,20 +63,6 @@
                 <div class=" layui-word-aux">（手机验证码）</div>
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">真实姓名：</label>
-            <div class="layui-input-block">
-                <input type="text" name="realname" placeholder="请输入真实姓名" autocomplete="off" class="layui-input">
-                <div class=" layui-word-aux">（真实姓名）</div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">身份证号：</label>
-            <div class="layui-input-block">
-                <input type="text" name="identification" placeholder="请输入身份证号" autocomplete="off" class="layui-input">
-                <div class=" layui-word-aux">（身份证号）</div>
-            </div>
-        </div>
         <div class="layui-form-item" style="margin-top: 38px">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit lay-filter="submit_go">立即提交</button>
@@ -135,18 +121,6 @@
         form.on('submit(submit_go)', function(data){
             if (!data.field.captcha) {
                 layer.msg('请填写验证码', {
-                    offset: '15px'
-                    , icon: 2
-                    , time: 1000
-                });
-            } else if (!data.field.realname) {
-                layer.msg('请填写真实名字', {
-                    offset: '15px'
-                    , icon: 2
-                    , time: 1000
-                });
-            } else if (!data.field.identification) {
-                layer.msg('请填写身份证信息', {
                     offset: '15px'
                     , icon: 2
                     , time: 1000
