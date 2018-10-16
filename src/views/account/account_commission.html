@@ -100,20 +100,20 @@
             , table = layui.table
             , searchData = [];
 
-        form.render();
-        form.on('submit(*)', function (data) {
-            searchData = data.field;
-
-            if (!searchData.time == "") {
-                searchData.time = searchData.time.split(' - ');
-            }
-            tableData();
-            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
-        });
-        laydate.render({
-            elem: '#time'
-            , range: true
-        });
+        // form.render();
+        // form.on('submit(*)', function (data) {
+        //     searchData = data.field;
+        //
+        //     if (!searchData.time == "") {
+        //         searchData.time = searchData.time.split(' - ');
+        //     }
+        //     tableData();
+        //     return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        // });
+        // laydate.render({
+        //     elem: '#time'
+        //     , range: true
+        // });
 
         //执行渲染 （实例 -- 方法渲染）
 

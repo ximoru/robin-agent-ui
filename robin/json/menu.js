@@ -65,6 +65,11 @@
                 "jump": "account/account_code"
             },
             {
+                "name": "accountCommission",
+                "title": "我的佣金收益记录",
+                "jump": "account/account_commission"
+            },
+            {
                 "name": "accountRecord",
                 "title": "我的提现记录",
                 "jump": "account/account_record"
