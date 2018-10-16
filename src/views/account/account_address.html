@@ -1,0 +1,59 @@
+<title>我的地址</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>我的管理</cite></a>
+        <a><cite>我的地址 </cite></a>
+    </div>
+</div>
+
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="layadmin-userfront-formlist">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <button class="layui-btn" id="add_card">&nbsp;&nbsp;+&nbsp;新增&nbsp;&nbsp;</button>
+                </div>
+            </div>
+        </div>
+        <div class="layui-card-body">
+            <table id="demo" lay-filter="test"></table>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use(['form', 'admin', 'table'], function () {
+        var form    = layui.form
+            , $     = layui.jquery
+            , table     = layui.table
+            , admin = layui.admin;
+
+        //执行渲染 （实例 -- 方法渲染)
+        function tableData() {
+            table.render({
+                elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
+                , url: layui.setter.api_base_url + 'agent/api/my/address/list'
+                , method: 'get'
+                , response: {
+                    statusName: 'code' //规定数据状态的字段名称，默认：code
+                    , statusCode: 200 //规定成功的状态码，默认：0
+                    , msgName: 'msg' //规定状态信息的字段名称，默认：msg
+                    , countName: 'count' //规定数据总数的字段名称，默认：count
+                    , dataName: 'data' //规定数据列表的字段名称，默认：data
+                }
+                , cols: [[
+                    {field: 'id', title: '序号'}
+                    , {field: 'province', title: '省份'}
+                    , {field: 'city', title: '城市'}
+                    , {field: 'town', title: '城镇'}
+                    , {field: 'address', title: '详情地址'}
+                ]], //设置表头
+            });
+        }
+
+        tableData();
+    });
+</script>
