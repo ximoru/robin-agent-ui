@@ -30,7 +30,7 @@ layui.define(['laytpl', 'layer', 'element', 'util'], function(exports){
     }
     ,treesPid: 'treesPid'
 
-    ,api_base_url: 'http://api.robin.laralab.org/' // 测试地址
+    ,api_base_url: 'http://apiv2.robinjf.com/' // 测试地址
 
     //自定义响应字段
     ,response: {
