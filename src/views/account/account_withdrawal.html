@@ -232,22 +232,20 @@
                     , type: 'POST'
                     , data: datas
                     , success: function (res) {
-                        console.log(res);
-                        // if (res.code == 200) {
-                        //     layer.msg(res.msg, {
-                        //         offset: '15px'
-                        //         , icon: 1
-                        //         , time: 1000
-                        //     }, function () {
-                        //         location.hash = '/account/account_record';
-                        //     });
-                        // } else {
-                        //     layer.msg(res.msg, {
-                        //         offset: '15px'
-                        //         , icon: 1
-                        //         , time: 1000
-                        //     });
-                        // }
+                        layer.msg(res.msg, {
+                            offset: '15px'
+                            , icon: 1
+                            , time: 1000
+                        }, function () {
+                            location.hash = '/account/account_record';
+                        });
+                    }
+                    , error: function (res) {
+                        layer.msg('提现申请失败。', {
+                            offset: '15px'
+                            , icon: 1
+                            , time: 1000
+                        });
                     }
                 });
             }
