@@ -237,7 +237,9 @@
                             , icon: 1
                             , time: 1000
                         }, function () {
-                            location.hash = '/account/account_record';
+                            if (res.code == 200) {
+                                location.hash = '/account/account_record';
+                            }
                         });
                     }
                     , error: function (res) {
