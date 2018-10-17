@@ -50,11 +50,6 @@
                 "jump": "account/account"
             },
             {
-                "name": "accountUpdate",
-                "title": "升级通知",
-                "jump": "account/account_update"
-            },
-            {
                 "name": "accountCode",
                 "title": "我的激活码",
                 "jump": "account/account_code"
