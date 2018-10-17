@@ -156,7 +156,7 @@
                 url: layui.setter.api_base_url + 'agent/api/my/card/add'
                 , type: 'POST'
                 , data: obj.field
-                , done: function (res) {
+                , success: function (res) {
                     if (res.code == 200) {
                         layer.msg(res.msg, {
                             offset: '15px'
@@ -165,13 +165,14 @@
                         });
                         tableData();
                         layer.closeAll('page'); //关闭信息框
-                    } else {
-                        layer.msg(res.msg, {
-                            offset: '15px'
-                            , icon: 1
-                            , time: 1000
-                        });
                     }
+                    // else {
+                    //     layer.msg(res.msg == '请输入合法的银行卡号码' ? '请输入正确的银行卡号码' : res.msg, {
+                    //         offset: '15px'
+                    //         , icon: 1
+                    //         , time: 1000
+                    //     });
+                    // }
                 }
             });
             return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。

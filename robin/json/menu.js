@@ -50,18 +50,18 @@
                 "jump": "account/account"
             },
             {
-                "name": "accountEarning",
-                "title": "我的收益",
-                "jump": "account/account_earning"
-            },
-            {
                 "name": "accountCode",
                 "title": "我的激活码",
                 "jump": "account/account_code"
             },
             {
+                "name": "accountEarning",
+                "title": "我的激活码收益",
+                "jump": "account/account_earning"
+            },
+            {
                 "name": "accountCommission",
-                "title": "我的佣金收益记录",
+                "title": "我的佣金收益",
                 "jump": "account/account_commission"
             },
             {
@@ -73,6 +73,11 @@
                 "name": "accountCard",
                 "title": "我的提现卡",
                 "jump": "account/account_card"
+            },
+            {
+                "name": "accountAddress",
+                "title": "我的地址",
+                "jump": "account/account_address"
             }
         ]
     }
