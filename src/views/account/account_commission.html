@@ -100,20 +100,20 @@
             , table = layui.table
             , searchData = [];
 
-        form.render();
-        form.on('submit(*)', function (data) {
-            searchData = data.field;
-
-            if (!searchData.time == "") {
-                searchData.time = searchData.time.split(' - ');
-            }
-            tableData();
-            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
-        });
-        laydate.render({
-            elem: '#time'
-            , range: true
-        });
+        // form.render();
+        // form.on('submit(*)', function (data) {
+        //     searchData = data.field;
+        //
+        //     if (!searchData.time == "") {
+        //         searchData.time = searchData.time.split(' - ');
+        //     }
+        //     tableData();
+        //     return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        // });
+        // laydate.render({
+        //     elem: '#time'
+        //     , range: true
+        // });
 
         //执行渲染 （实例 -- 方法渲染）
 
@@ -133,8 +133,7 @@
                 }
                 , cols: [[
                     {type: 'numbers'}
-                    , {field: 'number', title: '订单号'}
-                    , {field: 'order_id', title: '交易单号'}
+                    , {field: 'number', title: '交易单号'}
                     , {field: 'commission', align: 'right', title: '收益佣金'}
                     , {field: 'remark', title: '备注'}
                     , {field: 'created_at', title: '统计时间',templet:function(d){

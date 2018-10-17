@@ -12,34 +12,9 @@
 </div>
 <div class="layui-fluid layui-account">
 
-    <script type="text/html" template lay-url="{{ layui.setter.api_base_url }}agent/api/my/account">
-        <div class="layui-row layui-col-space15">
-            <div class="layui-col-md5">
-                <div class="layui-card">
-                    <div class="layui-card-body">
-                        <div class="acount_img"><img
-                                src="{{ (d.data.portrait == null || d.data.portrait == '')  ? 'http://bpic.588ku.com/element_origin_min_pic/01/48/88/2757444507812f6.jpg' : d.data.portrait }}"
-                                alt=""></div>
-                        <div class="name">
-                            {{ d.data.nickname }}
-                        </div>
-                        <ul class="site-doc-color">
-                            <li style="background-color: #5FB878;">
-                                <p>激活码总收益</p>
-                                <p>
-                                    {{ d.data.total_balance }}
-                                </p>
-                            </li>
-                            <li style="background-color: #5FB878;">
-                                <p>可提现激活码收益</p>
-                                <p>
-                                    {{ d.data.balance }}
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <div class="layui-row layui-col-space15">
+
+        <script type="text/html" template lay-url="{{ layui.setter.api_base_url }}agent/api/my/account">
             <div class="layui-col-md7">
                 <div class="layui-card">
                     <div class="layui-card-header" style="text-align: left">账户信息</div>
@@ -110,7 +85,40 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-    </script>
+        </script>
+        <script type="text/html" template lay-url="{{ layui.setter.api_base_url }}agent/api/my/commission/account">
+            <div class="layui-col-md5">
+                <div class="layui-card">
+                    <div class="layui-card-body">
+                        <ul class="site-doc-color">
+                            <li style="background-color: #5FB878;margin-top: 20px">
+                                <p>激活码总收益</p>
+                                <p>
+                                    {{ d.data.total_balance }}
+                                </p>
+                            </li>
+                            <li style="background-color: #5FB878;margin-top: 20px" lay-href="account/account_withdrawal" lay-tips="点击进入激活码提现">
+                                <p>可提现激活码收益</p>
+                                <p>
+                                    {{ d.data.balance }}
+                                </p>
+                            </li>
+                            <li style="background-color: #5FB878;margin-top: 20px">
+                                <p>佣金总收益</p>
+                                <p>
+                                    {{ d.data.total_commission }}
+                                </p>
+                            </li>
+                            <li style="background-color: #5FB878;margin-top: 20px" lay-href="account/account_withdrawal" lay-tips="点击进入佣金提现">
+                                <p>可提现佣金收益</p>
+                                <p>
+                                    {{ d.data.commission }}
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </script>
+    </div>
 </div>
